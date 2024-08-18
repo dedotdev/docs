@@ -1,8 +1,8 @@
 # Connect to network
 
-After setting your project, let's connect to the network to make some on-chain interactions.
+After setting up your project, let's connect to the network to make some on-chain interactions.
 
-### Initializing `DedotClient` and interact with Polkadot network
+### Initializing `DedotClient` and interact with `Polkadot` network
 
 {% tabs %}
 {% tab title="WebSocket" %}
