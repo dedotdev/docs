@@ -56,19 +56,6 @@ pnpm add -D @dedot/chaintypes
 
 Make sure to install `@dedot/chaintypes` as a `dev dependency.`
 
-### Typescript configuration
-
-We recommend using Typescript for your project to enable auto-completion for on-chain interactions or ink! contracts. Make sure to set `moduleResolution` to `bundler` (or `nodenext`) in your `tsconfig.json` file, so your IDE can discovers Types & APIs in `dedot`'s subpath packages (e.g: `dedot/contract`, `dedot/types`, `dedot/codecs`...)
-
-<pre class="language-json" data-title="tsconfig.json"><code class="lang-json">{
-  "compilerOptions": {
-    // ...
-<strong>    "moduleResolution": "bundler" // or "nodenext"
-</strong>    // ...
-  }
-}
-</code></pre>
-
 ## Next
 
-After installing all the necessary packages & configuring TypeScript for your project, let's start connecting the blockchain network and have some fun!
+After setting up your project & installing all the necessary packages, let's start connecting the blockchain network and have some fun!
