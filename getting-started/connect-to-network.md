@@ -1,6 +1,6 @@
 # Connect to network
 
-After setting up your project & installing `dedot` packages, let's connect to the network to make some on-chain interactions.
+After setting up your project & installing `dedot` packages, let's connect to the network to make some on-chain interactions. You can connect to the network using a WebSocket (`wss://`) connection or via light client ([smoldot](https://www.npmjs.com/package/smoldot)).
 
 ### Initializing `DedotClient` and interact with `Polkadot` network
 

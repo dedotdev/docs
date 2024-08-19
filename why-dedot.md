@@ -8,7 +8,7 @@ The idea of building Dedot was conceived & motivated from our frustration of bui
 2. High memory consumption
 3. Limitations in Types & APIs suggestions for individual chains
 
-### Dedot comes to address those issue
+### Dedot comes to address those issues
 
 1. Small bundle-size and tree-shakable
 2. Less memory consumption
