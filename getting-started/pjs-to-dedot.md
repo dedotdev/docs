@@ -39,10 +39,8 @@ const client = await DedotClient.new<PolkadotApi>({ provider, cacheMetadata: tru
 Unlike `@polkadot/api` where data are wrapped inside a [codec types](https://polkadot.js.org/docs/api/start/types.basics), so we always need to unwrap the data before using it (e.g: via `.unwrap()`, `.toNumber()`, `.toString()`, `.toJSON()` ...). `dedot` leverages the native TypeScript type system to represent scale-codec types, so you can use the data directly without extra handling/unwrapping.
 
 {% hint style="info" %}
-More information on how Dedot lerverage Typescript typesystem to represent [scale-codec](https://docs.substrate.io/reference/scale-codec/) (Rust) data types can be found [here](../type-system.md).
+More information on how Dedot lerverage Typescript type system to represent [scale-codec](https://docs.substrate.io/reference/scale-codec/) (Rust) data types can be found [here](../type-system.md).
 {% endhint %}
-
-
 
 Below is a few examples showing the differences between `dedot` & `@polkadot/api` when accessing the on-chain data/information.
 
