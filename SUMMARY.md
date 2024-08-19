@@ -5,7 +5,7 @@
 * [Getting started](getting-started/README.md)
   * [Installation](getting-started/installation.md)
   * [Connect to network](getting-started/connect-to-network.md)
-  * [@polkadot/api -> dedot](getting-started/polkadot-api-greater-than-dedot.md)
+  * [@polkadot/api -> dedot](getting-started/pjs-to-dedot.md)
   * [Packages structure](getting-started/packages-structure.md)
 * [Clients & Providers](clients-and-providers/README.md)
   * [Clients](clients-and-providers/clients.md)
