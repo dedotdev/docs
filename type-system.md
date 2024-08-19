@@ -1,6 +1,6 @@
 # Type system
 
-The table below is a mapping between scale-codec types (Rust) and TypeScript types that we're using for Dedot:
+The table below is a mapping between [scale-codec](https://docs.substrate.io/reference/scale-codec/) types (Rust) and TypeScript types that we're using for Dedot:
 
 | Scale Codec (Rust)                                                                                                                                                    | TypeScript (dedot)                                                                                                                                                                                                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

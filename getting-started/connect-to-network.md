@@ -1,6 +1,6 @@
 # Connect to network
 
-After setting up your project, let's connect to the network to make some on-chain interactions.
+After setting up your project & installing `dedot` packages, let's connect to the network to make some on-chain interactions.
 
 ### Initializing `DedotClient` and interact with `Polkadot` network
 
@@ -10,7 +10,7 @@ After setting up your project, let's connect to the network to make some on-chai
 import { DedotClient, WsProvider } from 'dedot';
 import type { PolkadotApi } from '@dedot/chaintypes';
 
-
+// Initialize providers & clients
 const provider = new WsProvider('wss://rpc.polkadot.io');
 const client = await DedotClient.new<PolkadotApi>(provider);
 
@@ -21,7 +21,6 @@ console.log('Metadata:', metadata);
 // Query on-chain storage
 const balance = await client.query.system.account(<address>);
 console.log('Balance:', balance);
-
 
 // Subscribe to on-chain storage changes
 const unsub = await client.query.system.number((blockNumber) => {
@@ -36,6 +35,7 @@ console.log('Polkadot ss58Prefix:', ss58Prefix);
 const pendingRewards = await client.call.nominationPoolsApi.pendingRewards(<address>)
 console.log('Pending rewards:', pendingRewards);
 
+// Unsubcribe to storage changes & disconnect from the network
 // await unsub();
 // await client.disconnect();
 ```
@@ -55,11 +55,13 @@ npm i smoldot # or via yarn, pnpm
 import { DedotClient, SmoldotProvider } from 'dedot';
 import type { PolkadotApi } from '@dedot/chaintypes';
 import * as smoldot from 'smoldot';
-import chainSpec from './chainspec.json';
+import chainSpec from './polkadot-chainspec.json';
 
+// Start smoldot instance & initialize a chain
 const client = smoldot.start();
 const chain = await client.addChain({ chainSpec });
 
+// Initialize providers & clients
 const provider = new SmoldotProvider(chain);
 const client = await DedotClient.new<PolkadotApi>(provider);
 
@@ -91,15 +93,41 @@ console.log('Pending rewards:', pendingRewards);
 {% endtab %}
 {% endtabs %}
 
+### Pick `ChainApi` interface for the network you're working with
+
+We recommend specifying the [`ChainApi`](https://github.com/dedotdev/chaintypes/blob/main/packages/chaintypes/src/index.ts) interface (e.g: [`PolkadotApi`](https://github.com/dedotdev/chaintypes/blob/main/packages/chaintypes/src/polkadot/index.d.ts) in the example above) of the chain that you want to interact with. This enable Types & APIs suggestion/autocompletion for that particular chain (via IntelliSense). If you don't specify a `ChainApi` interface, the default [`SubstrateApi`](https://github.com/dedotdev/dedot/blob/main/packages/api/src/chaintypes/substrate/index.ts) interface will be used.
+
+```typescript
+import { DedotClient, WsProvider } from 'dedot';
+import type { PolkadotApi, KusamaApi, MoonbeamApi, AstarApi } from '@dedot/chaintypes';
+
+const polkadotClient = await DedotClient.new<PolkadotApi>(new WsProvider('wss://rpc.polkadot.io'));
+const kusamaClient = await DedotClient.new<KusamaApi>(new WsProvider('wss://kusama-rpc.polkadot.io'));
+const moonbeamClient = await DedotClient.new<MoonbeamApi>(new WsProvider('wss://wss.api.moonbeam.network'));
+const astarClient = await DedotClient.new<AstarApi>(new WsProvider('wss://rpc.astar.network'));
+const genericClient = await DedotClient.new(new WsProvider('ws://localhost:9944'));
+```
+
+{% hint style="info" %}
+If you don't find the `ChainApi` for the network that you're working with in [the list](https://github.com/dedotdev/chaintypes/blob/main/packages/chaintypes/src/index.ts), you generate the `ChainApi` (Types & APIs) for it using [`dedot` cli](../cli.md).
+
+```sh
+# Generate ChainApi interface for Polkadot network via rpc endpoint: wss://rpc.polkadot.io
+npx dedot chaintypes -w wss://rpc.polkadot.io
+```
+
+
+
+Or open a [pull request](https://github.com/dedotdev/chaintypes/pulls) to add your favorite Substrate-based network to the `@dedot/chaintypes` repo.
+{% endhint %}
+
 ### Supports CommonJS (`require`)
 
 Dedot supports `CommonJS`, so you can use `require` to import primitives & APIs.
 
 ```typescript
-// main.js
 const { DedotClient, WsProvider } = require('dedot');
 
-// ...
 const provider = new WsProvider('wss://rpc.polkadot.io');
 const client = await DedotClient.new(provider);
 ```
