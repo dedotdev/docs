@@ -121,7 +121,7 @@ npx dedot chaintypes -w wss://rpc.polkadot.io
 Or open a [pull request](https://github.com/dedotdev/chaintypes/pulls) to add your favorite Substrate-based network to the `@dedot/chaintypes` repo.
 {% endhint %}
 
-### Supports CommonJS (`require`)
+### Dedot supports CommonJS (`require`)
 
 Dedot supports `CommonJS`, so you can use `require` to import primitives & APIs.
 
