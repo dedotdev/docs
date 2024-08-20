@@ -1,6 +1,0 @@
----
-icon: gratipay
----
-
-# Acknowledgment
-
