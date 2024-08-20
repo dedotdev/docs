@@ -51,26 +51,25 @@ npm i smoldot # or via yarn, pnpm
 2. Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains from [substrate-connect](https://github.com/paritytech/substrate-connect/tree/main/packages/connect-known-chains/specs).
 3. Initialize `SmoldotProvider` and `DedotClient` to connect to network
 
-```typescript
-import { DedotClient, SmoldotProvider } from 'dedot';
-import type { PolkadotApi } from '@dedot/chaintypes';
+<pre class="language-typescript"><code class="lang-typescript"><strong>import { DedotClient, SmoldotProvider } from 'dedot';
+</strong>import type { PolkadotApi } from '@dedot/chaintypes';
 import * as smoldot from 'smoldot';
 import chainSpec from './polkadot-chainspec.json';
 
-// Start smoldot instance & initialize a chain
+// Start smoldot instance &#x26; initialize a chain
 const client = smoldot.start();
 const chain = await client.addChain({ chainSpec });
 
-// Initialize providers & clients
+// Initialize providers &#x26; clients
 const provider = new SmoldotProvider(chain);
-const client = await DedotClient.new<PolkadotApi>(provider);
+const client = await DedotClient.new&#x3C;PolkadotApi>(provider);
 
 // Call rpc `state_getMetadata` to fetch raw scale-encoded metadata and decode it.
 const metadata = await client.rpc.state_getMetadata();
 console.log('Metadata:', metadata);
 
 // Query on-chain storage
-const balance = await client.query.system.account(<address>);
+const balance = await client.query.system.account(&#x3C;address>);
 console.log('Balance:', balance);
 
 
@@ -84,12 +83,12 @@ const ss58Prefix = client.consts.system.ss58Prefix;
 console.log('Polkadot ss58Prefix:', ss58Prefix);
 
 // Call runtime api
-const pendingRewards = await client.call.nominationPoolsApi.pendingRewards(<address>)
+const pendingRewards = await client.call.nominationPoolsApi.pendingRewards(&#x3C;address>)
 console.log('Pending rewards:', pendingRewards);
 
 // await unsub();
 // await client.disconnect();
-```
+</code></pre>
 {% endtab %}
 {% endtabs %}
 
