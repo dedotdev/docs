@@ -25,14 +25,13 @@ Designed to elevate the dapp development experience, Dedot is built to be lightw
 
 ### Features
 
-* Small bundle size, tree-shakable
-* Typed APIs for on-chain interactions
-* Typed ink! Contract APIs
+* Small bundle size, tree-shakable (no more `bn.js` or wasm blob)
+* Fully-typed APIs for on-chain interactions & ink! smart contract&#x20;
 * Build on top of both the [new](https://paritytech.github.io/json-rpc-interface-spec/introduction.html) & [legacy](https://github.com/w3f/PSPs/blob/master/PSPs/drafts/psp-6.md) (\*deprecated soon) JSON-RPC APIs
 * Support light clients (e.g: [smoldot](https://github.com/smol-dot/smoldot))
-* Native TypeScript type system for scale-codec
-* Compatible with [@polkadot/extension](https://github.com/polkadot-js/extension)-based wallets (SubWallet, Talisman...)
-* Fully-typed low-level JSON-RPC client
+* Native TypeScript type system for [scale-codec](https://docs.substrate.io/reference/scale-codec/)
+* Compatible with [`@polkadot/extension`](https://github.com/polkadot-js/extension)-based wallets (SubWallet, Talisman...)
+* Fully-typed low-level JSON-RPC client for advanced usage
 * Familiar API-style with `@polkadot/api`, easy and fast migration
 * Support Metadata V14, V15 (latest)
 * Metadata optimization (caching, compact mode 🔜)
