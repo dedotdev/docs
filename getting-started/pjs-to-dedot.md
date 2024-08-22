@@ -6,7 +6,7 @@ While the api style are similar, but there're also some differences you might ne
 
 ### Initialize clients
 
-`@polkadot/api`
+* `@polkadot/api`
 
 ```typescript
 import { ApiPromise, WsProvider } from '@polkadot/api';
@@ -15,7 +15,7 @@ const provider = new WsProvider('wss://rpc.polkadot.io');
 const client = await ApiPromise.create({ provider });
 ```
 
-`dedot`
+* `dedot`
 
 ```typescript
 import { DedotClient, WsProvider } from 'dedot';

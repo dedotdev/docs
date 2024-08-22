@@ -2,7 +2,11 @@
 
 The idea of building Dedot was conceived & motivated from our frustration of building Dapps in the Polkadot ecosystem using @polkadot/api (pjs). @polkadot/api is a good library and was built by the great minds behind it. But over the years, its limitations haven’t been addressed yet, and this hinders developers from creating optimal Dapps for the Polkadot ecosystem and makes it really hard to onboard new developers to the ecosystem.
 
-### Limitations of Polkadot.js API (@polkadot/api)
+{% hint style="info" %}
+Please refer to the [original post](https://forum.polkadot.network/t/introducing-dedot-a-delightful-javascript-client-for-polkadot-substrate-based-blockchains/8956) to introduce Dedot on Polkadot forum for more detailed information on why we build Dedot.
+{% endhint %}
+
+### Limitations of [Polkadot.js API](https://github.com/polkadot-js/api) (@polkadot/api)
 
 1. Large bundle-size (`wasm` & `bn.js` & unused type defs)
 2. High memory consumption
@@ -11,7 +15,7 @@ The idea of building Dedot was conceived & motivated from our frustration of bui
 ### Dedot comes to address those issues
 
 1. Small bundle-size and tree-shakable
-2. Less memory consumption
+2. Consume Less memory
 3. Types & APIs suggestion/auto-complete for individual Substrate-based chains
 
 ### Dedot also comes with more & more features
@@ -20,7 +24,7 @@ The idea of building Dedot was conceived & motivated from our frustration of bui
 2. Adopted latest changes in metadata V14 & V15
 3. Build on top of new JSON-RPC specs (and the legacy as well but deprecated soon)
 4. Support light clients (smoldot)
-5. Typed Contract APIs
+5. Typed APIs ink! smart contracts
 6. Fully typed low level JSON-RPC client
 7. A builtin mechanism to cache metadata
 8. Compact Metadata 🔜
