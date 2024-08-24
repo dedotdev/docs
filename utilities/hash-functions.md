@@ -1,2 +1,3 @@
 # Hash functions
 
+`TODO`
