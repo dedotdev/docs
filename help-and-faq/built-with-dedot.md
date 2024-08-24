@@ -4,11 +4,12 @@ icon: shapes
 
 # Built with Dedot
 
-### Dapps
+### DApps
 
 * [Try Dedot](https://try.dedot.dev) - [Source Code](https://github.com/dedotdev/trydedot)
 * [Tiny Url](https://link.dedot.dev) -  [Source Code](https://github.com/dedotdev/link)
-* [React hooks for Ink! smart contracts](https://typink.netlify.app/) - [Source Code](https://github.com/dedotdev/typink-app)
+* [React hooks for ink! smart contracts](https://typink.netlify.app/) - [Source Code](https://github.com/dedotdev/typink-app)
+* ... add yours?
 
 ### Open Hack from OpenGuild
 
