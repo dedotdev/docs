@@ -4,7 +4,7 @@ description: Dedot's Command line interface
 
 # CLI
 
-Dedot comes by default with a cli when you install [`dedot`](https://www.npmjs.com/package/dedot) package, you can access the cli using the name `dedot` (or `djs`). `dedot` cli helps you generate Types & APIs to any Substrate-based chains or ink! smart contracts that you're working with. This enable Types & APIs suggetions/auto-completion via IntelliSense for any on-chain interactions.
+Dedot comes by default with a cli when you install [`dedot`](https://www.npmjs.com/package/dedot) package, you can access the cli typing `dedot` (or `djs`) in the terminal. `dedot` cli helps you generate Types & APIs to any Substrate-based chains or ink! smart contracts that you're working with. This enable Types & APIs suggetions/auto-completion via IntelliSense for any on-chain interactions.
 
 ### `dedot chaintypes`
 
