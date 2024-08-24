@@ -2,6 +2,8 @@
 
 The `Contract` interface also have APIs to help you work with fully-typed contract events easily and smoothly.
 
+### Decode contract events from transaction events
+
 ```typescript
 import { ContractEvent } from 'dedot/contract';
 
@@ -27,13 +29,30 @@ await contract.tx.flip({ gasLimit: raw.gasRequired })
       const flippedEvent2 = contractEvents.find(contract.events.Flipped.is);
     }
   });
+```
 
+### Decode contract events from system events
+
+```typescript
 // Extracting contract events from system events
 await client.query.system.events((events) => {
   // fully-typed event
-  const flippedEvent = contract.events.Flipped.find(events);
+  const flippedEvent = contract.events.Flipped.find(events); // or find, is
   
   // get all events of this contract from current block
   const contractEvents: ContractEvent[] = contract.decodeEvents(events);
 })
 ```
+
+### Contract Event API
+
+`TODO`
+
+#### find
+
+#### filter
+
+#### is
+
+#### meta
+

@@ -1,6 +1,6 @@
 # Queries
 
-The `Contract` interface will be using to interact with a contract with syntax `contract.query.<message>`.
+The `Contract` interface will be using to interact with a contract using syntax: `contract.query.<message>`.
 
 ```typescript
 import { Contract } from 'dedot/contract';
