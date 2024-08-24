@@ -4,6 +4,8 @@ Transaction apis are designed to be compatible with [`IKeyringPair`](https://git
 
 All transaction apis are exposed in `ChainApi` interface and can be access with syntax: `api.tx.<pallet>.<transactionName>`. E.g: Available transaction apis for Polkadot network are defined [here](https://github.com/dedotdev/chaintypes/blob/main/packages/chaintypes/src/polkadot/tx.d.ts), similarly for other networks as well.
 
+### Sign & send a transaction
+
 Example 1: Sign transaction with a `Keying` account
 
 ```typescript
@@ -74,3 +76,23 @@ const unsub = client.tx.utility.batch([transferTx.call, remarkCall])
       }
     });
 ```
+
+### SubmittableExtrinsic
+
+`TODO`
+
+#### sign
+
+#### send
+
+#### signAndSend
+
+#### paymentInfo
+
+### SubmittableResult
+
+`TODO`
+
+### TxStatus
+
+`TODO`

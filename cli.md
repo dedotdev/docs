@@ -24,7 +24,7 @@ Options:
 * `-o, --output`: Folder to put generated files
 * `-c, --chain`: Customize the chain name to generate, default to [`runtimeVersion.specName`](https://github.com/paritytech/polkadot-sdk/blob/002d9260f9a0f844f87eefd0abce8bd95aae351b/substrate/primitives/version/src/lib.rs#L165)
 * `-d, --dts`: Generate `.d.ts` files instead of `.ts`, default: `true`&#x20;
-* `-s, --subpath`: Using subpath for shared packages (e.g: `dedot/types` instead of `@dedot/types`), default: `true`
+* `-s, --subpath`: Using subpath packages (e.g: `dedot/types` instead of `@dedot/types`), default: `true`
 
 ### `dedot typink`
 
@@ -42,5 +42,5 @@ Options:
 * `-o, --output`: Folder to put generated files
 * `-c, --contract`: Custom contract name, default is contract name from metadata
 * `-d, --dts`: Generate `.d.ts` files instead of `.ts`, default: `true`&#x20;
-* `-s, --subpath`: Using subpath for shared packages (e.g: `dedot/types` instead of `@dedot/types`), default: `true`
+* `-s, --subpath`: Using subpath packages (e.g: `dedot/types` instead of `@dedot/types`), default: `true`
 

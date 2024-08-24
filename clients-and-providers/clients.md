@@ -8,15 +8,23 @@ Dedot exposes 3 high-level clients offering powerful API that abstracting over t
 
 ### DedotClient
 
-
-
 ### LegacyClient
 
 ### JsonRpcClient
 
 ***
 
+### Connection Status
+
+
+
+### Client Events
+
+
+
 ### ApiOptions
+
+
 
 ### JsonRpcClientOptions
 

@@ -4,13 +4,15 @@ Events for each pallet emit during runtime operations and are defined in the med
 
 This `client.events` is helpful when we want quickly check if an event matches with an event that we're expecting in a list of events, the API also comes with type narrowing for the matched event, so event name & related data of the event are fully typed.
 
+### Working with on-chain events
+
 Example to list new accounts created in each block:
 
 ```typescript
 // ...
 const ss58Prefix = client.consts.system.ss58Prefix;
-await client.query.system.events(async (eventRecords) => {
-  const newAccountEvents = client.events.system.NewAccount.filter(eventRecords); // find, is
+await client.query.system.events(async (records) => {
+  const newAccountEvents = client.events.system.NewAccount.filter(records); // or find, is
 
   console.log(newAccountEvents.length, 'account(s) was created in block', await client.query.system.number());
 
@@ -20,3 +22,15 @@ await client.query.system.events(async (eventRecords) => {
 });
 // ...
 ```
+
+### Event API
+
+`TODO`
+
+#### is
+
+#### find
+
+#### filter
+
+#### meta
