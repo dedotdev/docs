@@ -14,3 +14,9 @@ Current Dedot only supports ink! versions `v4` & `v5`. We do not have plans to s
 2. [Deploy contracts](images-and-media.md) using `ContractDeployer` interface
 3. Interact with contracts using `Contract` interface ([queries](queries.md), [submit transactions](transactions.md), ...)
 4. Working with [fully-typed contract events](events.md)
+
+{% hint style="warning" %}
+If you're connecting to a local [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node/releases) for development, you might want to connect to the network using `LegacyClient` since the latest version of `substrate-contracts-node` ([`v0.41.0`](https://github.com/paritytech/substrate-contracts-node/releases/tag/v0.41.0)) does not working fine/comply with the latest updates for [new JSON-RPC specs](https://paritytech.github.io/json-rpc-interface-spec/introduction.html) for `DedotClient` to work properly.
+
+Following [this instruction](https://github.com/dedotdev/dedot?tab=readme-ov-file#using-legacyclient-to-connect-via-legacy-json-rpc-apis) to connect to the network via `LegacyClient`.
+{% endhint %}
