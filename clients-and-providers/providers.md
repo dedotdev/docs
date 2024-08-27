@@ -77,4 +77,67 @@ await provider.disconnect();
 
 ### Add your own custom provider?
 
-`TODO`
+Every provider must implement the `JsonRpcProvider` interface, defined as below:
+
+```typescript
+type ConnectionStatus = 'connected' | 'disconnected' | 'reconnecting';
+type ProviderEvent = ConnectionStatus | 'error'; // | 'timeout';
+
+interface JsonRpcProvider extends IEventEmitter<ProviderEvent> {
+  /**
+   * The current connection status
+   */
+  status: ConnectionStatus;
+
+  /**
+   * Send a JSON-RPC request,
+   * make sure to connect to the provider first before sending requests
+   *
+   * @param method
+   * @param params
+   */
+  send<T = any>(method: string, params: any[]): Promise<T>;
+
+  /**
+   * Make a subscription request,
+   * make sure to connect to the provider first before sending requests
+   *
+   * @param input
+   * @param callback
+   */
+  subscribe<T = any>(
+    input: JsonRpcSubscriptionInput,
+    callback: JsonRpcSubscriptionCallback<T>,
+  ): Promise<JsonRpcSubscription>;
+
+  /**
+   * Connect to the provider
+   */
+  connect(): Promise<this>;
+
+  /**
+   * Disconnect from the provider
+   */
+  disconnect(): Promise<void>;
+}
+```
+
+One can easily add a custom provider by implementing this interface:
+
+```typescript
+// custom-provider.ts
+import { JsonRpcProvider } from 'dedot';
+
+export class MyCustomProvider implements JsonRpcProvider {
+  // ... implementation details
+}
+
+// main.ts
+import { DedotClient } from 'dedot';
+import { MyCustomProvider } from './custom-provider';
+
+const client = await DedotClient(new MyCustomProvider());
+const chain: string = await client.rpc.system_chain();
+```
+
+More detailed information about the `JsonRpcProvider` and related types can be found in the [source code](https://github.com/dedotdev/dedot/blob/48d6bec5cfd0e663558b4b1ba02a4ed826e2abb3/packages/providers/src/types.ts#L38).
