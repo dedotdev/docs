@@ -56,4 +56,4 @@ Make sure to install `@dedot/chaintypes` as a `dev dependency`.
 
 ### Next
 
-After setting up your project & installing all the necessary packages, let's start connecting the blockchain network and have some fun!
+After setting up your project & installing all the necessary packages, let's start connecting to a blockchain network and have some fun!
