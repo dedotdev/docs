@@ -12,7 +12,7 @@ Please note that `@polkadot/keyring` is currently using `bn.js` and `wasm` blob 
 
 ### Signer
 
-Dedot APIs are designed to be compatible with [`IKeyringPair`](https://github.com/polkadot-js/api/blob/3bdf49b0428a62f16b3222b9a31bfefa43c1ca55/packages/types/src/types/interfaces.ts#L15-L21) and [`Signer`](https://github.com/polkadot-js/api/blob/3bdf49b0428a62f16b3222b9a31bfefa43c1ca55/packages/types/src/types/extrinsic.ts#L135-L150) interfaces, so you can sign the transactions with accounts/keys created by a [`Keyring`](https://github.com/polkadot-js/common/blob/22aab4a4e62944a2cf8c885f50be2c1b842813ec/packages/keyring/src/keyring.ts#L41-L40) (`@polkadot/api`) or signers exposed from any [Polkadot{.js}-extensions-based](https://github.com/polkadot-js/extension?tab=readme-ov-file#api-interface) wallets (SubWallet, Talisman, ...).
+Dedot APIs are designed to be compatible with [`IKeyringPair`](https://github.com/polkadot-js/api/blob/3bdf49b0428a62f16b3222b9a31bfefa43c1ca55/packages/types/src/types/interfaces.ts#L15-L21) and [`Signer`](https://github.com/polkadot-js/api/blob/3bdf49b0428a62f16b3222b9a31bfefa43c1ca55/packages/types/src/types/extrinsic.ts#L135-L150) interfaces, so you can sign the transactions with accounts/keys created by a [`Keyring`](https://github.com/polkadot-js/common/blob/22aab4a4e62944a2cf8c885f50be2c1b842813ec/packages/keyring/src/keyring.ts#L41-L40) from `@polkadot/keyring` or signers exposed from any [Polkadot{.js}-extensions-based](https://github.com/polkadot-js/extension?tab=readme-ov-file#api-interface) wallets (SubWallet, Talisman, ...).
 
 #### Signing transactions using `IKeyringPair`
 
