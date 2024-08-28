@@ -37,7 +37,7 @@ await contract.tx.flip({ gasLimit: raw.gasRequired })
 // Extracting contract events from system events
 await client.query.system.events((events) => {
   // fully-typed event
-  const flippedEvent = contract.events.Flipped.find(events); // or find, is
+  const flippedEvent = contract.events.Flipped.find(events); // or filter, is
   
   // get all events of this contract from current block
   const contractEvents: ContractEvent[] = contract.decodeEvents(events);

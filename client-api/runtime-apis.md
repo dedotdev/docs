@@ -23,11 +23,17 @@ For chains that only support Metadata v14, we need to bring in the Runtime Api d
 ```typescript
 import { RuntimeApis } from 'dedot/runtime-specs';
 
-const client = await DedotClient.new({ provider: new WsProvider('wss://rpc.mynetwork.com'), runtimeApis: RuntimeApis });
+const client = await DedotClient.new({ 
+  provider: new WsProvider('wss://rpc.mynetwork.com'), 
+  runtimeApis: RuntimeApis 
+});
 
 // Or bring in only the Runtime Api definition that you want to interact with
 import { AccountNonceApi } from 'dedot/runtime-specs';
-const client = await DedotClient.new({ provider: new WsProvider('wss://rpc.mynetwork.com'), runtimeApis: { AccountNonceApi } });
+const client = await DedotClient.new({ 
+  provider: new WsProvider('wss://rpc.mynetwork.com'), 
+  runtimeApis: { AccountNonceApi } 
+});
 
 // Get account nonce
 const nonce = await client.call.accountNonceApi.accountNonce(<address>);
