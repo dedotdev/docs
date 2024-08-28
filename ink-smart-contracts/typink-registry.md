@@ -1,3 +1,0 @@
-# Typink Registry
-
-`TODO`

@@ -26,7 +26,6 @@
   * [Transactions](ink-smart-contracts/transactions.md)
   * [Events](ink-smart-contracts/events.md)
   * [Handle errors](ink-smart-contracts/handle-errors.md)
-  * [Typink Registry](ink-smart-contracts/typink-registry.md)
 * [CLI](cli.md)
 * [Keyring & Signer](keyring-and-signer.md)
 * [Runtime upgrades](runtime-upgrades.md)
@@ -50,7 +49,3 @@
 * [Forum Posts](help-and-faq/forum-posts.md)
 * [Telegram](https://t.me/JoinDedot)
 * [Github](https://github.com/dedotdev/dedot)
-
-## Pending Pages
-
-* [Example Dapps & Scripts](pending-pages/example-dapps-and-scripts.md)
