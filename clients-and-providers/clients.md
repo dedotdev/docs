@@ -122,7 +122,7 @@ const txHash = await client.rpc.author_submitExtrinsic('0x...');
 
 ### Connection Status
 
-Clients keep track of connection status via the prop: `status` with type `ConnectionStatus`
+Clients keep track of connection status, and it can be access via  `client.status` with type `ConnectionStatus`
 
 ```typescript
 import { ConnectionStatus } from 'dedot';
@@ -139,13 +139,33 @@ There are 3 available statues:
 
 ### Client Events
 
-`TODO`
+Clients will emit the following events in specific situations:
 
-### ApiOptions
+```typescript
+type ApiEvent = 'connected' | 'disconnected' | 'reconnecting' | 
+                'error' | 'ready' | 'runtimeUpgraded';
+```
 
-`TODO`
+* `connected`: The client is connected to the network
+* `disconnected`: The client is disconnected from the network
+* `reconnecting`: The client is trying to reconnect to the network
+* `error`: There is a connection error occurred (e.g: WebSocket error)
+* `ready`: Client's initialization process (download metadata, current runtime version...) is completed and ready to perform on-chain interactions
+* `runtimeUpgraded`: A runtime upgrade occurred
 
-### JsonRpcClientOptions
+```typescript
+import { SubstrateRuntimeVersion } from 'dedot';
+
+// Listen to client/api events
+client.on('connected', () => {});
+client.on('disconnected', () => {});
+client.on('reconnecting', () => {});
+client.on('ready', () => {});
+client.on('error', (e: Error) => {});
+client.on('runtimeUpgraded', (runtimeVersion: SubstrateRuntimeVersion) => {});
+```
+
+### ApiOptions & JsonRpcClientOptions
 
 `TODO`
 

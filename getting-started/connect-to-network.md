@@ -122,9 +122,48 @@ Or open a [pull request](https://github.com/dedotdev/chaintypes/pulls) to add yo
 
 ### Caching metadata
 
-`TODO`
+In the bootstrapping/intialization process, clients have to download metadata from the network to prepare for on-chain interactions. Downloading a big metadata blob can take a large amount of time, depending on the JSON-RPC server that dapps are connecting to, it might potentially take longer if the connection is via a light client. For example, downloading Polkadot metadata (\~500 kB) can take up to 500ms or \~1s or even longer depends on the network conditions.
 
-### Dedot supports CommonJS (`require`)
+Clients have an option to cache the downloaded metadata and using it again next time the dapp is loaded without having to download again. By default, Dedot save the cached metadata to `localStorage` in browser environment.
+
+Enable caching metadata when initialize Dedot's clients:
+
+<pre class="language-typescript"><code class="lang-typescript"><strong>import { DedotClient, WsProvider } from 'dedot';
+</strong>import type { PolkadotApi } from '@dedot/chaintypes';
+
+// Initialize providers &#x26; clients
+const provider = new WsProvider('wss://rpc.polkadot.io');
+const client = await DedotClient.new&#x3C;PolkadotApi>({ provider, cacheMetadata: true });
+</code></pre>
+
+<details>
+
+<summary>Add a custom cache storage?</summary>
+
+You can also add a custom cache storage for different environments:
+
+```typescript
+import { DedotClient, WsProvider } from 'dedot';
+import type { PolkadotApi } from '@dedot/chaintypes';
+import type { IStorage } from '@dedot/storage';
+
+// Implement CustomStorage
+class CustomStorage implements IStorage {
+   // implementation details
+}
+
+// Initialize providers & clients
+const provider = new WsProvider('wss://rpc.polkadot.io');
+const client = await DedotClient.new<PolkadotApi>({ 
+   provider, 
+   cacheMetadata: true,
+   cacheStorage: new CustomStorage()
+});
+```
+
+</details>
+
+### Dedot supports CommonJS
 
 Dedot supports `CommonJS`, so you can use `require` to import primitives & APIs.
 
