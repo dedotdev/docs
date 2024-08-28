@@ -4,10 +4,10 @@ Pallet errors are thrown out when things go wrong in the runtime, those are defi
 
 Similar to Event API, this API is helpful when we want to check if an error maches with an error that we're expecting.
 
-Example if an error is `AlreadyExists` from `Assets` pallet:
+Example to check if an error is `AlreadyExists` from `Assets` pallet:
 
 ```typescript
-// ...
+// From system events
 await client.query.system.events(async (records) => {
   for (const tx of records) {
     if (client.events.system.ExtrinsicFailed.is(tx.event)) {
@@ -20,7 +20,30 @@ await client.query.system.events(async (records) => {
     }
   }
 });
-// ...
+```
+
+Example checking for error details in transaction callback:
+
+```typescript
+// Or from events in transaction callback
+client.tx.balances.transferKeepAlive('<BOB_ADDRESS>', 1_000n)
+  .signAndSend(aliceAddressOrKeyPair, ({ dispatchError, events }) => {
+    if (dispatchError) { // DispatchError extracted from ExtrinsicFailed event if any
+      // Check for specific error
+      if (client.errors.balances.InsufficientBalance.is(dispatchError)) {
+        console.log('Balance too low to send value!');
+      } else {
+        console.log('Other error occurred', dispatchError);
+      }
+      
+      // Check by finding error metadata
+      const errorMeta = client.registry.findErrorMeta(dispatchError);
+      if (errorMeta) {
+        const { pallet, name, docs } = errorMeta;
+        console.log(`Error: [${pallet}][${name}] - ${docs.join(',')}`);
+      }
+    }
+  });
 ```
 
 ### Error API
