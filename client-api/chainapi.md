@@ -39,6 +39,14 @@ Install package `@dedot/chaintypes` to get access to a [list of known `ChainApi`
 We're welcome everyone to open a [pull request](https://github.com/dedotdev/chaintypes/pulls) to add your favorite Substrate-based network to the [existing list](https://github.com/dedotdev/chaintypes/blob/main/scripts/networks.ts) of supported networks in[`@dedot/chaintypes`](https://github.com/dedotdev/chaintypes) repo.
 {% endhint %}
 
+{% hint style="info" %}
+There is a job running twice a day to check for any runtime upgrades in the existing supported networks list and regenerate the `ChainApi` interface (Types & APIs) accordingly for these changes.&#x20;
+
+
+
+It's important to keep up with changes from the network that you're working with and prepare for any breaking upgrades coming up. Please refer to the [Runtime upgrades](../runtime-upgrades.md) page for more information.
+{% endhint %}
+
 #### Generate `ChainApi` interface using Dedot's CLI
 
 You can also generate `ChainApi` interface for any Substrate-based blockchains using `dedot`' CLI.
