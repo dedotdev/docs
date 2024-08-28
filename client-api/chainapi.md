@@ -36,7 +36,7 @@ Install package `@dedot/chaintypes` to get access to a [list of known `ChainApi`
 * ...
 
 {% hint style="info" %}
-We're welcome everyone to open a [pull request](https://github.com/dedotdev/chaintypes/pulls) to add your favorite Substrate-based network to the `@dedot/chaintypes` repo.
+We're welcome everyone to open a [pull request](https://github.com/dedotdev/chaintypes/pulls) to add your favorite Substrate-based network to the [existing list](https://github.com/dedotdev/chaintypes/blob/main/scripts/networks.ts) of supported networks in[`@dedot/chaintypes`](https://github.com/dedotdev/chaintypes) repo.
 {% endhint %}
 
 #### Generate `ChainApi` interface using Dedot's CLI
