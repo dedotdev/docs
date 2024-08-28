@@ -4,7 +4,7 @@ With [forkless upgrade](https://wiki.polkadot.network/docs/learn-runtime-upgrade
 
 ### Listen to runtime upgrades
 
-Clients will emit a `runtimeUpgrade` event whenever there is a new runtime upgrade happens. Dapps can listen to this event and react accordingly (e.g: show/hide ui components, notifications ...)
+Clients will emit a `runtimeUpgraded` event whenever there is a new runtime upgrade happens. Dapps can listen to this event and react accordingly (e.g: show/hide ui components, notifications ...)
 
 ```typescript
 client.on('runtimeUpgraded', (runtimeVersion: SubstrateRuntimeVersion) => {
