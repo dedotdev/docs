@@ -138,7 +138,7 @@ const client = await DedotClient.new&#x3C;PolkadotApi>({ provider, cacheMetadata
 
 <details>
 
-<summary>Add a custom cache storage?</summary>
+<summary>Add a custom caching storage?</summary>
 
 You can also add a custom cache storage for different environments:
 
