@@ -2,9 +2,10 @@
 
 ### SS58 Address
 
-* decodeAddress
-* encodeAddress
+#### decodeAddress
+
+#### encodeAddress
 
 ### EVM Address
 
-* isEvmAddress
+#### isEvmAddress

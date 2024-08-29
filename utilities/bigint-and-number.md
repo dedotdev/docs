@@ -1,9 +1,15 @@
 # BigInt & number
 
-* bnMax
-* bnMin
-* bnAbs
-* bnToHex
-* bnToU8a
-* numberToHex
-* numberToU8a
+### bnToHex
+
+### bnToU8a
+
+### bnMax
+
+### bnMin
+
+### bnAbs
+
+### numberToHex
+
+### numberToU8a
