@@ -2,6 +2,5 @@
 hidden: true
 ---
 
-# Balances
+# How to?
 
-`TODO`

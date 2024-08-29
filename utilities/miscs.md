@@ -1,3 +1,4 @@
 # Miscs
 
-`TODO`
+* assert
+* assertFalse

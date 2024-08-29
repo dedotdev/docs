@@ -6,19 +6,20 @@ After setting up your project & installing `dedot` packages, let's connect to th
 
 {% tabs %}
 {% tab title="WebSocket" %}
-<pre class="language-typescript"><code class="lang-typescript"><strong>import { DedotClient, WsProvider } from 'dedot';
-</strong>import type { PolkadotApi } from '@dedot/chaintypes';
+```typescript
+import { DedotClient, WsProvider } from 'dedot';
+import type { PolkadotApi } from '@dedot/chaintypes';
 
-// Initialize providers &#x26; clients
+// Initialize providers & clients
 const provider = new WsProvider('wss://rpc.polkadot.io');
-const client = await DedotClient.new&#x3C;PolkadotApi>(provider);
+const client = await DedotClient.new<PolkadotApi>(provider);
 
 // Call rpc `state_getMetadata` to fetch raw scale-encoded metadata and decode it.
 const metadata = await client.rpc.state_getMetadata();
 console.log('Metadata:', metadata);
 
 // Query on-chain storage
-const balance = await client.query.system.account(&#x3C;address>);
+const balance = await client.query.system.account(<address>);
 console.log('Balance:', balance);
 
 // Subscribe to on-chain storage changes
@@ -31,13 +32,13 @@ const ss58Prefix = client.consts.system.ss58Prefix;
 console.log('Polkadot ss58Prefix:', ss58Prefix);
 
 // Call runtime api
-const pendingRewards = await client.call.nominationPoolsApi.pendingRewards(&#x3C;address>)
+const pendingRewards = await client.call.nominationPoolsApi.pendingRewards(<address>)
 console.log('Pending rewards:', pendingRewards);
 
-// Unsubcribe to storage changes &#x26; disconnect from the network
+// Unsubcribe to storage changes & disconnect from the network
 // await unsub();
 // await client.disconnect();
-</code></pre>
+```
 {% endtab %}
 
 {% tab title="Smoldot (Light Client)" %}

@@ -1,3 +1,8 @@
 # Uint8Array (U8a)
 
-`TODO`
+* u8aToHex
+* u8aToString
+* u8aEq
+* toU8a
+* concatU8a
+

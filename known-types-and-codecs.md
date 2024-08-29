@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Known types & codecs
 
 `TODO`

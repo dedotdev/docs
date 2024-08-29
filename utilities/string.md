@@ -1,3 +1,10 @@
 # String
 
-`TODO`
+* stringToU8a
+* stringToHex
+* stringCamelCase
+* stringPascalCase
+* stringSnakeCase
+* stringDashCase
+* stringLowerFirst
+* stringUpperFirst

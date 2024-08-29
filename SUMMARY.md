@@ -35,13 +35,13 @@
   * [Uint8Array (U8a)](utilities/uint8array-u8a.md)
   * [String](utilities/string.md)
   * [Hash functions](utilities/hash-functions.md)
-  * [SS58 Address](utilities/ss58-address.md)
-  * [EVM Address](utilities/evm-address.md)
+  * [Address](utilities/address.md)
   * [BigInt & number](utilities/bigint-and-number.md)
   * [Miscs](utilities/miscs.md)
   * [Balances](utilities/balances.md)
 * [Scale codec](scale-codec.md)
 * [Known types & codecs](known-types-and-codecs.md)
+* [How to?](how-to.md)
 
 ## Help & FAQ
 
