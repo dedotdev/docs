@@ -2,6 +2,8 @@
 
 Dedot offers type-safe APIs to interact with ink! smart contracts. Primitives to work with contracts are exposed in `dedot/contract` package.
 
+<figure><img src="../.gitbook/assets/inkcontractapi.gif" alt=""><figcaption><p>Interact with a PSP22 contracts using Dedot's type-safe APIs</p></figcaption></figure>
+
 ### Supported ink! versions
 
 {% hint style="info" %}
