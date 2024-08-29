@@ -20,9 +20,9 @@ layout:
 # Welcome to Dedot
 
 {% hint style="warning" %}
-**WORK IN PROGRESS**
+🚧 **WORK IN PROGRESS**
 
-This documentation is a **work in progress**, we're working on it to adding more information about Dedot.
+This documentation is a **work in progress**, we're working on it to adding more docs & tutorials about Dedot.
 {% endhint %}
 
 Dedot is the next-generation JavaScript client for [Polkadot](https://polkadot.com) and [Substrate-based](https://substrate.io/) blockchains.&#x20;
