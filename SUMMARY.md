@@ -49,3 +49,4 @@
 * [Forum Posts](help-and-faq/forum-posts.md)
 * [Telegram](https://t.me/JoinDedot)
 * [Github](https://github.com/dedotdev/dedot)
+* [API Reference](https://typedoc.dedot.dev/)
