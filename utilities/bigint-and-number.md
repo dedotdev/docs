@@ -1,15 +1,43 @@
 # BigInt & number
 
-### bnToHex
+### `bnToHex`
 
-### bnToU8a
+```typescript
+import { bnToHex } from 'dedot/utils';
+```
 
-### bnMax
+### `bnToU8a`
 
-### bnMin
+```typescript
+import { bnToU8a } from 'dedot/utils';
+```
 
-### bnAbs
+### `bnMax`
 
-### numberToHex
+```typescript
+import { bnMax } from 'dedot/utils';
+```
 
-### numberToU8a
+### `bnMin`
+
+```typescript
+import { bnMin } from 'dedot/utils';
+```
+
+### `bnAbs`
+
+```typescript
+import { bnAbs } from 'dedot/utils';
+```
+
+### `numberToHex`
+
+```typescript
+import { numberToHex } from 'dedot/utils';
+```
+
+### `numberToU8a`
+
+```typescript
+import { numberToU8a } from 'dedot/utils';
+```

@@ -2,10 +2,22 @@
 
 ### SS58 Address
 
-#### decodeAddress
+#### `decodeAddress`
 
-#### encodeAddress
+```typescript
+import { decodeAddress } from 'dedot/utils';
+```
+
+#### `encodeAddress`
+
+```typescript
+import { encodeAddress } from 'dedot/utils';
+```
 
 ### EVM Address
 
-#### isEvmAddress
+#### `isEvmAddress`
+
+```typescript
+import { isEvmAddress } from 'dedot/utils';
+```

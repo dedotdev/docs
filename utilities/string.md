@@ -1,17 +1,49 @@
 # String
 
-### stringToU8a
+### `stringToU8a`
 
-### stringToHex
+```typescript
+import { stringToU8a } from 'dedot/utils';
+```
 
-### stringCamelCase
+### `stringToHex`
 
-### stringPascalCase
+```typescript
+import { stringToHex } from 'dedot/utils';
+```
 
-### stringSnakeCase
+### `stringCamelCase`
 
-### stringDashCase
+```typescript
+import { stringCamelCase } from 'dedot/utils';
+```
 
-### stringLowerFirst
+### `stringPascalCase`
 
-### stringUpperFirst
+```typescript
+import { stringPascalCase } from 'dedot/utils';
+```
+
+### `stringSnakeCase`
+
+```typescript
+import { stringSnakeCase } from 'dedot/utils';
+```
+
+### `stringDashCase`
+
+```typescript
+import { stringDashCase } from 'dedot/utils';
+```
+
+### `stringLowerFirst`
+
+```typescript
+import { stringLowerFirst } from 'dedot/utils';
+```
+
+### `stringUpperFirst`
+
+```typescript
+import { stringUpperFirst } from 'dedot/utils';
+```

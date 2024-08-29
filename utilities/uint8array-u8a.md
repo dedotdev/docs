@@ -1,6 +1,6 @@
 # Uint8Array (U8a)
 
-### u8aToHex
+### `u8aToHex`
 
 Convert a Uint8Array to a hex string
 
@@ -10,7 +10,7 @@ import { u8aToHex } from 'dedot/utils';
 u8aToHex(new Uint8Array([128, 0, 10])) // '0x80000a'
 ```
 
-### u8aToString
+### `u8aToString`
 
 Convert a Uint8Array to a string
 
@@ -21,7 +21,7 @@ const sampleU8a = new Uint8Array([0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x77, 0x6f
 u8aToString(sampleU8a) // 'hello world'
 ```
 
-### u8aEq
+### `u8aEq`
 
 Compare two Uint8Arrays for equality
 
@@ -32,7 +32,7 @@ u8aEq(new Uint8Array([1, 2, 3]), new Uint8Array([1, 2, 3])) // true
 u8aEq(new Uint8Array([1, 2, 3]), new Uint8Array([4, 5, 6])) // false
 ```
 
-### toU8a
+### `toU8a`
 
 Converts the input to a hex string, input can be in different types: `string | number | Uint8Array | HexString`
 
@@ -45,7 +45,7 @@ toU8a('0x1234')) // new Uint8Array([0x12, 0x34])
 toU8a('abc')) // new Uint8Array([0x61, 0x62, 0x63])
 ```
 
-### concatU8a
+### `concatU8a`
 
 Concat multiple Uint8Array instances into a single Uint8Array.
 

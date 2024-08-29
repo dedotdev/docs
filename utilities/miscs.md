@@ -1,11 +1,31 @@
 # Miscs
 
-### assert
+### `assert`
 
-### assertFalse
+```typescript
+import { assert } from 'dedot/utils';
+```
 
-### isHex
+### `assertFalse`
 
-### isU8a
+```typescript
+import { assertFalse } from 'dedot/utils';
+```
 
-### isWasm
+### `isHex`
+
+```typescript
+import { isHex } from 'dedot/utils';
+```
+
+### `isU8a`
+
+```typescript
+import { isU8a } from 'dedot/utils';
+```
+
+### `isWasm`
+
+```typescript
+import { isWasm } from 'dedot/utils';
+```

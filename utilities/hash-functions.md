@@ -1,13 +1,37 @@
 # Hash functions
 
-### blake2AsHex
+### `blake2AsHex`
 
-### blake2AsU8a
+```typescript
+import { blake2AsHex } from 'dedot/utils';
+```
 
-### keccakAsU8a
+### `blake2AsU8a`
 
-### keccakAsHex
+```typescript
+import { blake2AsU8a } from 'dedot/utils';
+```
 
-### xxhashAsU8a
+### `keccakAsU8a`
 
-### xxhashAsHex
+```typescript
+import { keccakAsU8a } from 'dedot/utils';
+```
+
+### `keccakAsHex`
+
+```typescript
+import { keccakAsHex } from 'dedot/utils';
+```
+
+### `xxhashAsU8a`
+
+```typescript
+import { xxhashAsU8a } from 'dedot/utils';
+```
+
+### `xxhashAsHex`
+
+```typescript
+import { xxhashAsHex } from 'dedot/utils';
+```
