@@ -1,6 +1,6 @@
 # HexString
 
-### hexToU8a
+### `hexToU8a`
 
 Converts a hex string to a Uint8Array
 
@@ -10,7 +10,7 @@ import { hexToU8a } from 'dedot/utils';
 hexToU8a('0x1234') // new Uint8Array([0x12, 0x34])
 ```
 
-### hexToString
+### `hexToString`
 
 Converts a hex to a string
 
@@ -20,7 +20,7 @@ import { hexToString } from 'dedot/utils';
 hexToString('0x616263') // 'abc'
 ```
 
-### isZeroHex
+### `isZeroHex`
 
 Check if a hex is zero
 
@@ -31,7 +31,7 @@ isZeroHex('0x00000000') // true
 isZeroHex('0x00000001') // false
 ```
 
-### hexAddPrefix & hexStripPrefix
+### `hexAddPrefix` & `hexStripPrefix`
 
 Add/remove the '0x' prefix to/from a hex string
 
@@ -45,7 +45,7 @@ hexStripPrefix('00000000') // '00000000'
 hexStripPrefix('0x00000001') // '00000001'
 ```
 
-### toHex
+### `toHex`
 
 Converts the input to a hex string, input can be in different types: `string | number | Uint8Array | HexString`
 
