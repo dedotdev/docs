@@ -6,7 +6,7 @@ All transaction apis are exposed in `ChainApi` interface and can be access with 
 
 ### Sign & send a transaction
 
-Example 1: Sign transaction with a `Keying` account
+#### Example 1: Sign transaction with a `Keying` account
 
 ```typescript
 import { cryptoWaitReady } from '@polkadot/util-crypto';
@@ -29,7 +29,7 @@ const unsub = await client.tx.balances
     });
 ```
 
-Example 2: Sign transaction using `Signer` from Polkadot{.js} wallet extension
+#### Example 2: Sign transaction using `Signer` from Polkadot{.js} wallet extension
 
 ```typescript
 const injected = await window.injectedWeb3['polkadot-js'].enable('A cool dapp');
@@ -47,16 +47,17 @@ const unsub = await client.tx.balances
     });
 ```
 
-Example 3: Submit a batch transaction
+<details>
 
-```typescript
-import type { PolkadotRuntimeRuntimeCallLike } from '@dedot/chaintypes/polkadot';
+<summary>Example 3: Submit a batch transaction</summary>
 
+<pre class="language-typescript"><code class="lang-typescript"><strong>import type { PolkadotRuntimeRuntimeCallLike } from '@dedot/chaintypes/polkadot';
+</strong>
 // Omit the detail for simplicity
 const account = ...;
 const signer = ...;
 
-const transferTx = client.tx.balances.transferKeepAlive(<destAddress>, 2_000_000_000_000n);
+const transferTx = client.tx.balances.transferKeepAlive(&#x3C;destAddress>, 2_000_000_000_000n);
 const remarkCall: PolkadotRuntimeRuntimeCallLike = {
   pallet: 'System',
   palletCall: {
@@ -75,7 +76,71 @@ const unsub = client.tx.utility.batch([transferTx.call, remarkCall])
         await unsub();
       }
     });
+</code></pre>
+
+</details>
+
+<details>
+
+<summary>Example 4: Teleport WND from Westend Asset Hub to Westend via XCM</summary>
+
+```typescript
+import { WestendAssetHubApi, XcmVersionedLocation, XcmVersionedAssets, XcmV3WeightLimit } from '@dedot/chaintypes/westendAssetHub';
+import { AccountId32 } from 'dedot/codecs';
+
+const TWO_TOKENS = 2_000_000_000_000n;
+const destAddress = <bobAddress>;
+
+const client = await DedotClient.new<WestendAssetHubApi>('...westend-assethub-rpc...');
+
+const dest: XcmVersionedLocation = {
+  type: 'V3',
+  value: { parents: 1, interior: { type: 'Here' } },
+};
+
+const beneficiary: XcmVersionedLocation = {
+  type: 'V3',
+  value: {
+    parents: 0,
+    interior: {
+      type: 'X1',
+      value: {
+        type: 'AccountId32',
+        value: { id: new AccountId32(destAddress).raw },
+      },
+    },
+  },
+};
+
+const assets: XcmVersionedAssets = {
+  type: 'V3',
+  value: [
+    {
+      id: {
+        type: 'Concrete',
+        value: {
+          parents: 1,
+          interior: { type: 'Here' },
+        },
+      },
+      fun: {
+        type: 'Fungible',
+        value: TWO_TOKENS,
+      },
+    },
+  ],
+};
+
+const weight: XcmV3WeightLimit = { type: 'Unlimited' };
+
+client.tx.polkadotXcm
+  .limitedTeleportAssets(dest, beneficiary, assets, 0, weight)
+  .signAndSend(alice, { signer, tip: 1_000_000n }, (result) => {
+    console.dir(result, { depth: null });
+  });
 ```
+
+</details>
 
 ### SubmittableExtrinsic
 
