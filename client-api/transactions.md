@@ -144,15 +144,109 @@ client.tx.polkadotXcm
 
 ### SubmittableExtrinsic
 
-`TODO`
+`SubmittableExtrinsic` is an extrinsic instance that's ready to sign and send to the network for inclusion. A `SubmittableExtrinsic` will be created after you execute a tx method with required arguments.
 
-#### sign
+```typescript
+const extrinsic: SubmittableExtrinsic = client.tx.balances.transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+```
 
-#### send
+#### `sign`
 
-#### signAndSend
+Sign the extrinsic using the [`IKeyringPair` or `Signer`](../keyring-and-signer.md)
 
-#### paymentInfo
+```typescript
+client.tx.balances
+    .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+    .sign(<signer_address>);
+```
+
+You can also customize the transaction by using signer options as the second parameter:
+
+```typescript
+
+import { SignerOptions } from 'dedot/types';
+const options: SignerOptions = {
+    nonce: 10,
+    tip: 1_000n,
+    metadataHash: '0x...',
+    assetId: { ... },
+    signer: CustomSignerInstance,
+}
+
+client.tx.balances
+    .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+    .sign(<signer_address>, options);
+```
+
+#### `send`
+
+Send the extrinsic to the network
+
+```typescript
+const txHash = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .sign(<signer_address>) // we need to sign the tx before sending it
+                  .send();
+```
+
+And watch its status as needed
+
+```typescript
+const unsubFn = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .sign(<signer_address>) // we need to sign the tx before sending it
+                  .send(({ status }) => { console.log(status) }); // ref: TxStatus
+```
+
+#### `signAndSend`
+
+Sign and send the extrinsic to the network. This method's simply a combination of `sign` & `send` methods.
+
+```typescript
+const txHash = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .signAndSend(<signer_address>);
+
+// Or keep watching the tx status
+const unsubFn = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .signAndSend(<signer_address>, (result) => {
+                     const { status } = result;
+                     console.log(status);
+                  });
+```
+
+Or pass in an options object to customize the transaction parameters
+
+```typescript
+import { SignerOptions } from 'dedot/types';
+const options: SignerOptions = {
+    nonce: 10,
+    tip: 1_000n,
+    metadataHash: '0x...',
+    assetId: { ... },
+    signer: CustomSignerInstance,
+}
+
+const unsubFn = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .signAndSend(<signer_address>, options, (result) => {
+                     const { status } = result;
+                     console.log(status);
+                  });
+```
+
+#### `paymentInfo`
+
+Estimate gas fee for a transaction
+
+```typescript
+const { partialFee } = client.tx.balances
+    .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+    .paymentInfo(<signer_address>);
+    
+console.log('Estimated gas fee', partialFee);
+```
 
 ### SubmittableResult
 
@@ -160,4 +254,37 @@ client.tx.polkadotXcm
 
 ### TxStatus
 
-`TODO`
+Available statuses of a transaction:
+
+```typescript
+export type TxStatus =
+  // emits after we validate the transaction via `call.taggedTransactionQueue.validateTransaction`
+  | { type: 'Validated' } 
+  // emits after we submit the transaction via TxBroadcaster
+  | { type: 'Broadcasting' } 
+  // emits when the tx is included in the best block of the chain
+  | { type: 'BestChainBlockIncluded'; value: { blockHash: HexString; blockNumber: number; txIndex: number } }
+  // emits when the tx was retracted from the chain for various reasons
+  | { type: 'NoLongerInBestChain' } 
+  // emits when the tx is finalized
+  | { type: 'Finalized'; value: { blockHash: HexString; blockNumber: number; txIndex: number } }
+  // emits when the tx is invalid for some reasons: invalid nonce ...
+  | { type: 'Invalid'; value: { error: string } }
+  // emits when the client cannot keep track of the tx
+  | { type: 'Drop'; value: { error: string } };
+```
+
+### SignerOptions
+
+```typescript
+export interface PayloadOptions {
+  nonce?: number; // customize the nonce
+  tip?: bigint; // add a tip for the block producer
+  assetId?: number | object; // customize asset to pay for fee
+  metadataHash?: HexString; // submit metadata hash for validation
+}
+
+export interface SignerOptions extends PayloadOptions {
+  signer?: Signer; // customize the signer instance to sign the transaction
+}
+```
