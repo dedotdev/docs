@@ -45,15 +45,3 @@ client.tx.balances.transferKeepAlive('<BOB_ADDRESS>', 1_000n)
     }
   });
 ```
-
-### Error API
-
-`TODO`
-
-#### is
-
-#### meta
-
-### How to find error meta from `DispatchError`?
-
-`TODO`
