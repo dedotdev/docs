@@ -47,7 +47,7 @@ Designed to elevate the dapp development experience, Dedot is built & optimized 
 * Follow the creator of Dedot - [@realsinzii](https://x.com/realsinzii) on X
 * Github repository: [dedotdev/dedot](https://github.com/dedotdev/dedot)
 
-### Acknowledment
+### Acknowledgment
 
 Dedot takes a lot of inspirations from project [`@polkadot/api`](https://github.com/polkadot-js/api). A big thank to all the maintainers/contributors of this awesome library.
 
