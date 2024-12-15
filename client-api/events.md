@@ -33,10 +33,10 @@ Check for a specific on-chain event or event record.
 const records = await client.query.system.events();
 
 const instantiatedEvent = records.map(({ event }) => event)
-                                .find(api.events.contracts.Instantiated.is); // narrow down the type for type suggestions
+                                .find(client.events.contracts.Instantiated.is); // narrow down the type for type suggestions
                                 
 // OR
-const instantiatedEventRecord = records.find(api.events.contracts.Instantiated.is);
+const instantiatedEventRecord = records.find(client.events.contracts.Instantiated.is);
 ```
 
 #### find
@@ -46,7 +46,7 @@ Find an on-chain event from a list of system event records.
 ```typescript
 const records = await client.query.system.events();
 
-const instantiatedEvent = api.events.contracts.Instantiated.find(records);
+const instantiatedEvent = client.events.contracts.Instantiated.find(records);
 ```
 
 #### filter
@@ -56,5 +56,5 @@ Return a list of a specific on-chain event from a list of system event records.
 ```typescript
 const records = await client.query.system.events();
 
-const instantiatedEvents = api.events.contracts.Instantiated.filter(records);
+const instantiatedEvents = client.events.contracts.Instantiated.filter(records);
 ```
