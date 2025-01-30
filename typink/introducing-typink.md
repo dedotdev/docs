@@ -44,8 +44,8 @@ Addressing these challenges requires a modernized approach—one that **prioriti
 
 * **Fully Type-Safe API**: Provides complete **type safety** for **contract messages and event handling**.
 * **Decoupled Wallet Integration**: Supports **external wallet solutions** e.g: **SubConnect** or **Talisman Connect**.
-* **Lazy Initialization for Multi-Chain Support**: Connects to multiple chains **only when needed**, reducing resource consumption.
 * **Provided a built-in CLI & Boilerplate Project**: Simplifies onboarding, setting up projects and speeds up development.
+* **Lazy Initialization for Multi-Chain Support**: Connects to multiple chains **only when needed**, reducing resource consumption.
 
 ## Conclusion
 
@@ -57,9 +57,9 @@ Typink is a game-changer for ink! developers, providing a fully type-safe, effic
 
 🔌 Flexible Wallet Integration
 
-⚡ Optimized for Multi-Chain Interactions
-
 🛠️ Built-in CLI & Boilerplate for Quick Setup
+
+⚡ Optimized for Multi-Chain Interactions
 
 With Typink, developing ink! dApps has never been easier. Get started today and build the next-generation Polkadot applications with confidence!
 
