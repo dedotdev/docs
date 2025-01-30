@@ -4,6 +4,8 @@ description: Typesafe react hooks to interact with ink! smart contracts powered 
 
 # Introducing Typink
 
+> WIP  🚧
+
 ## Overview
 
 The **ink! smart contract language** is an essential component of the **Polkadot ecosystem**, enabling developers to build decentralized applications (dApps) using **Rust-based smart contracts**. As the ecosystem evolves, **ink!** is now maintained by a dedicated community and continues to see promising advancements.
