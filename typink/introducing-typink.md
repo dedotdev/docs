@@ -22,7 +22,7 @@ While the ink! ecosystem has evolved significantly, developing decentralized app
 
 Many solutions provide utilities for interacting with smart contracts, but **fully type-safe interactions at the contract message and event level are still lacking**. Without strict type enforcement, developers often encounter runtime errors and unexpected behaviors, making debugging and maintenance more complex.
 
-**Rigid Wallet & Client Integration**
+**Rigid Wallet Connector Integration**
 
 Current approaches often **couple wallet authentication tightly with client connections**, making it difficult to swap or integrate different wallet providers seamlessly. Developers looking to support multiple authentication methods or custom wallet solutions may find this restrictive, requiring workarounds to achieve the desired flexibility.
 
@@ -42,10 +42,22 @@ Addressing these challenges requires a modernized approach—one that **prioriti
 
 **Key Features**
 
-* **Fully Type-Safe API**: Provides complete **type safety** for **contract messages and event handling**.
+* **Fully Type-Safe React Hooks**: Provides complete **type safety** for **contract messages and event handling**.
 * **Decoupled Wallet Integration**: Supports **external wallet solutions** e.g: **SubConnect** or **Talisman Connect**.
 * **Provided a built-in CLI & Boilerplate Project**: Simplifies onboarding, setting up projects and speeds up development.
-* **Lazy Initialization for Multi-Chain Support**: Connects to multiple chains **only when needed**, reducing resource consumption.
+* **Multi-chain supports with lazy initialization**: Connects to multiple chains **only when needed**, reducing resource consumption.
+
+Let's dive into the details for each feature
+
+## Features
+
+### **Fully Type-Safe React Hooks**
+
+### Choose your favorite wallet connector
+
+### Built-in CLI to start new boilerplate project
+
+### Multi-chain supports with lazy initialization
 
 ## Conclusion
 
@@ -62,10 +74,4 @@ Typink is a game-changer for ink! developers, providing a fully type-safe, effic
 ⚡ Optimized for Multi-Chain Interactions
 
 With Typink, developing ink! dApps has never been easier. Get started today and build the next-generation Polkadot applications with confidence!
-
-
-
-
-
-
 
