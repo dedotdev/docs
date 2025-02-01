@@ -1,22 +1,18 @@
----
-description: >-
-  To demonstrate how easy it is to start a new ink! dapp project, let's make a
-  simple PSP22 Transfer dApp using Typink!
----
+# Develop ink! dApp using Typink
 
-# Develop ink! dApp using Typink!
+In this tutorial, we'll guide you through the process of developing a simple ink! dApp using Typink- a new set of react hooks & utilities to help to build new ink! dApp faster & easier.
 
-> WIP 🚧
+Let's make a simple PSP22 Transfer dApp using Typink!
 
 ### Create a new project via `create-typink` CLI
 
-Let's setting up a new ink! dapp project via the `create-typink`cli.
+We're going to set up a new ink! dapp project via the `create-typink`cli.
 
 ```sh
 npx create-typink@latest
 ```
 
-We're going to use choose `greeter`  as preset contract and deploy our contract to `Pop Testnet` .
+Let's choose `greeter`  as example contract and deploy our contract to `Pop Testnet`.
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
@@ -395,6 +391,6 @@ Now, let's try it out when we transfer some PSP22 token to a different address:
 
 <figure><img src="../../.gitbook/assets/transferpsp22.gif" alt=""><figcaption></figcaption></figure>
 
-### Conclusion
+### Github Repo
 
 You can always checkout the [Github repo](https://github.com/sinzii/psp22-transfer) of this `psp22-transfer`project, clone & have fun!
