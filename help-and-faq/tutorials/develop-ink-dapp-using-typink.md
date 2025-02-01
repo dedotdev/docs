@@ -106,7 +106,7 @@ After this step, we're ready to start coding the logic for our application.
 First, let's initiate a global `Contract`instance in `AppProvider` (`ui/src/providers/AppProvider.tsx`) so we can use it across our app & components.
 
 {% code lineNumbers="true" %}
-```typescript
+```tsx
 import { createContext, useContext } from 'react';
 import { Props } from '@/types.ts';
 import { ContractId } from 'contracts/deployments.ts';
@@ -142,7 +142,7 @@ export function AppProvider({ children }: Props) {
 Next, let's fetch & show the PSP22 balance for connected account. We're going to update the `MainBoard`component (`ui/src/components/MainBoard.tsx`) to add the logic using `useContractQuery`hook to fetch basic contract information (symbol, decimals) and psp22 balance of the connected account.
 
 {% code title="ui/src/components/MainBoard.tsx" lineNumbers="true" %}
-```typescript
+```tsx
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import PendingText from '@/components/shared/PendingText.tsx';
 import { useApp } from '@/providers/AppProvider.tsx';
