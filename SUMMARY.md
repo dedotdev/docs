@@ -26,7 +26,7 @@
   * [Transactions](ink-smart-contracts/transactions.md)
   * [Events](ink-smart-contracts/events.md)
   * [Handle errors](ink-smart-contracts/handle-errors.md)
-* [Typink!](typink/README.md)
+* [Typink](typink/README.md)
   * [Introducing Typink](typink/introducing-typink.md)
 * [CLI](cli.md)
 * [Keyring & Signer](keyring-and-signer.md)

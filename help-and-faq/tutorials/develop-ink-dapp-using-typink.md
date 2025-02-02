@@ -391,6 +391,4 @@ Now, let's try it out when we transfer some PSP22 token to a different address:
 
 <figure><img src="../../.gitbook/assets/transferpsp22.gif" alt=""><figcaption></figcaption></figure>
 
-### Github Repo
-
 You can always checkout the [Github repo](https://github.com/sinzii/psp22-transfer) of this `psp22-transfer`project, clone & have fun!
