@@ -1,5 +1,7 @@
 ---
 description: Typesafe react hooks to interact with ink! smart contracts powered by Dedot!
+cover: ../.gitbook/assets/Typink_Banner_FINAL.webp
+coverY: 0
 ---
 
 # Introducing Typink
