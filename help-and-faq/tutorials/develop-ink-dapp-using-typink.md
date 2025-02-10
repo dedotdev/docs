@@ -31,7 +31,7 @@ After you finished claiming & transfering the PAS token to Pop Testnet, let's co
 
 ### Compile & deploy PSP22 Contract
 
-We're using this [PSP22 implementation](https://github.com/Cardinal-Cryptography/PSP22) from [Cardinal-Cryptography](https://github.com/Cardinal-Cryptography) (the team behinds Aleph Zero) in this tutorials.
+We're using this [PSP22 implementation](https://github.com/Cardinal-Cryptography/PSP22) from [Cardinal-Cryptography](https://github.com/Cardinal-Cryptography) (the team behind Aleph Zero) in this tutorials.
 
 After cloning the repo, we can build the contract using the following commands:
 
@@ -59,11 +59,11 @@ We'll fill in some basic information of the PSP22 token as below, feel free to a
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-We deployed the contract, and the its address is: `13JSR8RUSxtg11MLg2Pj5jV7Yh9sh9gCnjFW7ReHGmDj5Rvq`
+We deployed the contract, and its address is: `13JSR8RUSxtg11MLg2Pj5jV7Yh9sh9gCnjFW7ReHGmDj5Rvq`
 
 <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-Finally, let's update the contract deployments list in file: `contracts/deployment.ts` to register our new PSP22 contract to the list, this helps us quickly initiaciate new `Contract` instance via Typink's react hooks: `useContract`
+Finally, let's update the contract deployments list in file: `contracts/deployment.ts` to register our new PSP22 contract to the list, this helps us quickly initiate new `Contract` instance via Typink's react hooks: `useContract`
 
 {% code title="contracts/deployment.ts" lineNumbers="true" %}
 ```typescript
@@ -87,11 +87,11 @@ export const deployments: ContractDeployment[] = [
 ```
 {% endcode %}
 
-### Generate Typescript bindings for the contract
+### Generate TypeScript bindings for the contract
 
-Next, let's generate Typscript bindings/types for our PSP22 contract using its metadata. This helps us enable auto-complete & suggestions (IntelliSense) later when we deal & interact with contract messages / events.
+Next, let's generate TypeScript bindings/types for our PSP22 contract using its metadata. This helps us enable auto-complete & suggestions (IntelliSense) later when we deal & interact with contract messages / events.
 
-We can do this via `dedot`cli, `dedot` is a required dependency and will be install for for every Typink-based projects. Let's put the generated types in folder: `contracts/types` :
+We can do this via `dedot`cli, `dedot` is a required dependency and will be install for every Typink-based projects. Let's put the generated types in folder: `contracts/types` :
 
 ```sh
 npx dedot typink -m ./contracts/artifacts/psp22/psp22.json -o ./contracts/types
