@@ -34,3 +34,59 @@ const unsub = await client.query.system.events((records) => {
   }
 });
 </code></pre>
+
+### Multi queries
+
+#### Same storage types
+
+Each [StorageMap](https://paritytech.github.io/polkadot-sdk/master/frame_support/storage/types/struct.StorageMap.html) query expose a `.multi` method provides a way to query multiple keys of the same type in a single RPC call. You can either make a direct query or pass a callback to subscribe to changes as they occur.
+
+Direct one-time query
+
+```typescript
+const balances = await client.query.system.account.multi([ALICE, BOB]);
+
+const [aliceBalance, bobBalance] = balances;
+```
+
+Subscription
+
+```typescript
+const unsub = await client.query.system.account.multi([ALICE, BOB], (balances) => {
+  // Trigger when there're changes in alice or bob balances
+  const [aliceBalance, bobBalance] = balances;
+});
+```
+
+#### Different storage types
+
+When you need to retrieve multiple storage values of different types/storage keys in a single call, you can use the `queryMulti` method. This is more efficient than making multiple individual queries as it batches the requests into a single RPC call.
+
+Direct one-time query
+
+```typescript
+const [accountBalance, blockNumber] = await client.queryMulti([
+  { fn: client.query.system.account, args: [ALICE] },
+  { fn: client.query.system.number }
+]),
+
+// The return results are fully-typed
+//  - accountBalance: FrameSystemAccountInfo
+//  - blockNumber: number
+```
+
+Subscription
+
+```typescript
+const unsub = await client.queryMulti([
+  { fn: client.query.system.account, args: [ALICE] },
+  { fn: client.query.system.number }
+], ([accountBalance, blockNumber]) => {
+  // Trigger every time there're changes in accountBalance or block number
+})
+    
+await unsub() // unsub later when done
+```
+
+
+
