@@ -48,17 +48,24 @@ console.log('Pending rewards:', pendingRewards);
 npm i smoldot # or via yarn, pnpm
 ```
 
-2. Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains from [substrate-connect](https://github.com/paritytech/substrate-connect/tree/main/packages/connect-known-chains/specs).
-3. Initialize `SmoldotProvider` and `DedotClient` to connect to network
+2. Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@substrate/connect-known-chains` package.
+
+```sh
+npm i @substrate/connect-known-chains # or via yarn, pnpm
+```
+
+2. Initialize `SmoldotProvider` and `DedotClient` to connect to network
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>import { DedotClient, SmoldotProvider } from 'dedot';
 </strong>import type { PolkadotApi } from '@dedot/chaintypes';
 import * as smoldot from 'smoldot';
-import chainSpec from './polkadot-chainspec.json';
+
+// import `polkadot` chain spec to connect to Polkadot
+import { polkadot } from '@substrate/connect-known-chains'
 
 // Start smoldot instance &#x26; initialize a chain
 const client = smoldot.start();
-const chain = await client.addChain({ chainSpec });
+const chain = await client.addChain({ chainSpec: polkadot });
 
 // Initialize providers &#x26; clients
 const provider = new SmoldotProvider(chain);
