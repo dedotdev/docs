@@ -4,7 +4,13 @@ icon: shapes
 
 # Built with Dedot
 
-### DApps
+### Real-World Projects Powered by Dedot
+
+* [Polkadot Live App](https://polkadot-live.github.io/) ([Github](https://github.com/polkadot-live/polkadot-live-app))
+* [Typink](https://typink.dev) ([Github](https://github.com/dedotdev/typink))
+* ... add yours? PRs are more than welcome!
+
+### Example Dapps
 
 * [Try Dedot](https://try.dedot.dev) - [Source Code](https://github.com/dedotdev/trydedot)
 * [Tiny Url](https://link.dedot.dev) -  [Source Code](https://github.com/dedotdev/link)
