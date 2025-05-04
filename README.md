@@ -1,5 +1,5 @@
 ---
-cover: .gitbook/assets/Dedot_Baner_final.png
+cover: .gitbook/assets/Dedot Baner (1991-491).png
 coverY: 0
 layout:
   cover:
@@ -19,14 +19,14 @@ layout:
 
 # Welcome to Dedot
 
-Dedot is the next-generation JavaScript client for [Polkadot](https://polkadot.com) and [Substrate-based](https://substrate.io/) blockchains.&#x20;
+Dedot is the next-generation JavaScript client for [Polkadot](https://polkadot.com) and [Polkadot SDK-based](https://polkadot.com/platform/sdk/) networks.
 
-Designed to elevate the dapp development experience, Dedot is built & optimized to be lightweight and tree-shakable, offering precise Types & APIs suggestions for individual Substrate-based blockchains and ink! Smart Contracts. Dedot also helps dapps efficiently connect to multiple chains simultaneously as we head toward a seamless multi-chain future.
+Designed to elevate the dapp development experience, Dedot is built & optimized to be lightweight and tree-shakable, offering precise Types & APIs suggestions for individual Polkadot SDK-based blockchains and ink! Smart Contracts. Dedot also helps dapps efficiently connect to multiple chains simultaneously as we head toward a seamless multi-chain future.
 
 ### Features
 
 * Small bundle size, tree-shakable (no more `bn.js` or wasm blob)
-* Fully-typed APIs for [on-chain interactions](client-api/) & [ink! smart contract](ink-smart-contracts/)&#x20;
+* Fully-typed APIs for [on-chain interactions](client-api/) & [ink! smart contract](ink-smart-contracts/)
 * Build on top of both the [new](https://paritytech.github.io/json-rpc-interface-spec/introduction.html) & [legacy](https://github.com/w3f/PSPs/blob/master/PSPs/drafts/psp-6.md) (\*deprecated soon) JSON-RPC APIs
 * Support light clients (e.g: [smoldot](https://github.com/smol-dot/smoldot))
 * Using native TypeScript type system for [scale-codec](https://docs.substrate.io/reference/scale-codec/)
