@@ -58,3 +58,11 @@ const records = await client.query.system.events();
 
 const instantiatedEvents = client.events.contracts.Instantiated.filter(records);
 ```
+
+**watch**
+
+```tsx
+const unsub = await client.events.system.NewAccount.watch((events) => {
+  console.log('New Account Created', events)
+})
+```
