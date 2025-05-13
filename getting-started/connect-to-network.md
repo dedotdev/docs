@@ -64,8 +64,8 @@ import * as smoldot from 'smoldot';
 import { polkadot } from '@substrate/connect-known-chains'
 
 // Start smoldot instance &#x26; initialize a chain
-const client = smoldot.start();
-const chain = await client.addChain({ chainSpec: polkadot });
+const smoldotClient = smoldot.start();
+const chain = await smoldotClient.addChain({ chainSpec: polkadot });
 
 // Initialize providers &#x26; clients
 const provider = new SmoldotProvider(chain);
