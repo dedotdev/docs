@@ -108,8 +108,8 @@ const remarkTx = client.tx.system.remark('Hello World');
 
 // Generate proof for extrinsic parts
 const callData = remarkTx.callHex; // Hex-encoded call data
-const includedInExtrinsic = extra.$Data.tryDecode(extra.data);
-const includedInSignedData = extra.$AdditionalSigned.tryDecode(extra.additionalSigned);
+const includedInExtrinsic = extra.$Data.tryEncode(extra.data);
+const includedInSignedData = extra.$AdditionalSigned.tryEncode(extra.additionalSigned);
 
 const proof = merkleizer.proofForExtrinsicParts(
     callData, includedInExtrinsic, includedInSignedData
