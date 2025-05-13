@@ -2,7 +2,7 @@
 description: 'RFC-0078: Merkleized Metadata Implementation'
 ---
 
-# MerkleizedMetadata
+# Merkleized Metadata
 
 ### Calculating Metadata Hash/Digest
 
@@ -61,7 +61,7 @@ const proof = merkleizer.proofForExtrinsic(txHex);
 
 ```
 
-#### Proofs for extrinsic payload
+#### Proof for extrinsic payload
 
 ```typescript
 import { ExtraSignedExtension } from 'dedot';
@@ -86,7 +86,7 @@ const proof = merkleizer.proofForExtrinsicPayload(txRawPayload);
 
 ```
 
-#### Proofs for extrinsic parts
+#### Proof for extrinsic parts
 
 This is equivalent to `proofForExtrinsicPayload`, except that each part of the transaction’s raw payload is calculated individually.
 
