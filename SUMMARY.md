@@ -39,6 +39,7 @@
   * [BigInt & number](utilities/bigint-and-number.md)
   * [Miscs](utilities/miscs.md)
   * [Balances](utilities/balances.md)
+  * [MerkleizedMetadata](utilities/merkleizedmetadata.md)
 * [Scale codec](scale-codec.md)
 * [Known types & codecs](known-types-and-codecs.md)
 * [How to?](how-to.md)
