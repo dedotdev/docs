@@ -17,7 +17,7 @@ const client = await DedotClient.new(provider);
 // Get metadata from the client
 const metadata = client.metadata;
 
-// - Or fetch redirectly via runtime apis
+// - Or refetch it directly via runtime apis
 // const metadata = await client.call.metadata.metadataAtVersion(15);
 
 // Define chain-specific information
