@@ -41,38 +41,32 @@ console.log('Pending rewards:', pendingRewards);
 ```
 {% endtab %}
 
-{% tab title="Smoldot (Light Client)" %}
-1. Install `smoldot` package
-
-```sh
-npm i smoldot # or via yarn, pnpm
-```
-
-2. Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@substrate/connect-known-chains` package.
+{% tab title="Smoldot" %}
+Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@substrate/connect-known-chains` package.
 
 ```sh
 npm i @substrate/connect-known-chains # or via yarn, pnpm
 ```
 
-2. Initialize `SmoldotProvider` and `DedotClient` to connect to network
+Next, initialize `SmoldotProvider` and `DedotClient` instances to connect to network
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>import { DedotClient, SmoldotProvider } from 'dedot';
 </strong>import type { PolkadotApi } from '@dedot/chaintypes';
-import * as smoldot from 'smoldot';
+import { start } from 'dedot/smoldot';
 
 // import `polkadot` chain spec to connect to Polkadot
 import { polkadot } from '@substrate/connect-known-chains'
 
 // Start smoldot instance &#x26; initialize a chain
-const smoldotClient = smoldot.start();
-const chain = await smoldotClient.addChain({ chainSpec: polkadot });
+const smoldot = start();
+const chain = await smoldot.addChain({ chainSpec: polkadot });
 
 // Initialize providers &#x26; clients
 const provider = new SmoldotProvider(chain);
 const client = await DedotClient.new&#x3C;PolkadotApi>(provider);
 
-// Call rpc `state_getMetadata` to fetch raw scale-encoded metadata and decode it.
-const metadata = await client.rpc.state_getMetadata();
+<strong>// Call rpc `state_getMetadata` to fetch raw scale-encoded metadata and decode it.
+</strong>const metadata = await client.rpc.state_getMetadata();
 console.log('Metadata:', metadata);
 
 // Query on-chain storage
@@ -97,7 +91,62 @@ console.log('Pending rewards:', pendingRewards);
 // await client.disconnect();
 </code></pre>
 {% endtab %}
+
+{% tab title="Smoldot (via WebWorker)" %}
+Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@substrate/connect-known-chains` package.
+
+```sh
+npm i @substrate/connect-known-chains # or via yarn, pnpm
+```
+
+Start a smoldot client within a WebWorker, then initialize `SmoldotProvider` & `DedotClient` to connect to the network
+
+```typescript
+import { startWithWorker } from 'dedot/smoldot/with-worker';
+import SmoldotWorker from 'dedot/smoldot/worker?worker';
+
+// Start smoldot instance within a WebWorker
+const smoldot = startWithWorker(new SmoldotWorker());
+
+// Dynamically import Polkadot chain spec
+const { chainSpec } = await import('@substrate/connect-known-chains/polkadot');
+
+// Initialize a chain
+const chain = smoldot.addChain({ chainSpec });
+
+// Initialize provider & client
+const provider = new SmoldotProvider(chain);
+const client = await DedotClient.new<PolkadotApi>(provider);
+
+// Call rpc `state_getMetadata` to fetch raw scale-encoded metadata and decode it.
+const metadata = await client.rpc.state_getMetadata();
+console.log('Metadata:', metadata);
+
+// Query on-chain storage
+const balance = await client.query.system.account(<address>);
+console.log('Balance:', balance);
+
+
+// Subscribe to on-chain storage changes
+const unsub = await client.query.system.number((blockNumber) => {
+  console.log(`Current block number: ${blockNumber}`);
+});
+
+// Get pallet constants
+const ss58Prefix = client.consts.system.ss58Prefix;
+console.log('Polkadot ss58Prefix:', ss58Prefix);
+
+// Call runtime api
+const pendingRewards = await client.call.nominationPoolsApi.pendingRewards(<address>)
+console.log('Pending rewards:', pendingRewards);
+
+// await unsub();
+// await client.disconnect();
+```
+{% endtab %}
 {% endtabs %}
+
+Note, for instruction on how to connect to a parachain, check out [this example](https://github.com/dedotdev/dedot/blob/main/examples/scripts/smoldot/connect-parachain.ts) on Dedot repository.
 
 ### Pick `ChainApi` interface for the network you're working with
 
