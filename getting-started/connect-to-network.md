@@ -102,6 +102,7 @@ npm i @substrate/connect-known-chains # or via yarn, pnpm
 Start a smoldot client within a WebWorker, then initialize `SmoldotProvider` & `DedotClient` to connect to the network
 
 ```typescript
+import { DedotClient, SmoldotProvider } from 'dedot';
 import { startWithWorker } from 'dedot/smoldot/with-worker';
 import SmoldotWorker from 'dedot/smoldot/worker?worker';
 
