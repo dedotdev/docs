@@ -25,14 +25,14 @@ if (data.isErr) {
 }
 
 // Submitting the transaction after passing validation
-await contract.tx.flip({ gasLimit: raw.gasRequired })
-  .signAndSend(ALICE, ({ status, events }) => {
-    if (status.type === 'BestChainBlockIncluded' || status.type === 'Finalized') {
-      // fully-typed event
-      const flippedEvent = contract.events.Flipped.find(events);
-      console.log('Old value', flippedEvent.data.old);
-      console.log('New value', flippedEvent.data.new);
-    }
+const { events } = await contract.tx.flip({ gasLimit: raw.gasRequired })
+  .signAndSend(ALICE, ({ status }) => {
+    console.log(status.type)
   })
-
+  .untilFinalized(); // or .untilBestChainBlockIncluded();
+  
+  // fully-typed event
+const flippedEvent = contract.events.Flipped.find(events);
+console.log('Old value', flippedEvent.data.old);
+console.log('New value', flippedEvent.data.new);
 ```

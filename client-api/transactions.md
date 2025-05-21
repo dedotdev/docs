@@ -248,6 +248,38 @@ const { partialFee } = client.tx.balances
 console.log('Estimated gas fee', partialFee);
 ```
 
+### Tx Resolver Methods
+
+`untilBestChainBlockIncluded`
+
+Wait until the transaction is **included in best chain block** and resolve to return the result (`SubmittableResult`) with access to on-chain events, status, and dispatchInfo ...
+
+```typescript
+const result = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .signAndSend(<signer_address>) // or .send(...)
+                  .untilBestChainBlockIncluded();
+                  
+const { status, events, ... } = result; // status.type = 'BestChainBlockIncluded'
+```
+
+{% hint style="warning" %}
+Please note that the `BestChainBlockIncluded` event might occurred multiple times during a transaction life-cycle due to forks. This method will resolve when it receives the first `BestChainBlockIncluded` event.  So please use this with caution.
+{% endhint %}
+
+`untilFinalized`
+
+Similarly, wait until the transaction is included in a **finalized block** and resolve.
+
+```typescript
+const result = await client.tx.balances
+                  .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
+                  .signAndSend(<signer_address>) // or .send(...)
+                  .untilFinalized();
+                  
+const { status, events, ... } = result; // status.type = 'Finalized'
+```
+
 ### SubmittableResult
 
 `TODO`

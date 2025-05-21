@@ -62,15 +62,15 @@ After dry-run the transaction to make sure there will be no errors. Now let's su
 
 ```typescript
 // Submitting the transaction to instanciate the contract
-await deployer.tx.new(true, { gasLimit: gasRequired, salt })
-  .signAndSend(CALLER, ({ status, events}) => {
-    if (status.type === 'BestChainBlockIncluded' || status.type === 'Finalized') {
-      // fully-typed event
-      const instantiatedEvent = client.events.contracts.Instantiated.find(events);
-      const contractAddress = instantiatedEvent.palletEvent.data.contract.address();
-      console.log(contractAddress);
-    }    
-  });
+const { events } = await deployer.tx.new(true, { gasLimit: gasRequired, salt })
+  .signAndSend(CALLER, ({ status }) => {
+    console.log(status.type)
+  })
+  .untilFinalized(); // or .untilBestChainBlockIncluded();
+  
+const instantiatedEvent = client.events.contracts.Instantiated.find(events);
+const contractAddress = instantiatedEvent.palletEvent.data.contract.address();
+console.log(contractAddress);
 ```
 
 ### Listen for `contract.Instantiated` event from system events
