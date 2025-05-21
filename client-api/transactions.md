@@ -8,8 +8,7 @@ All transaction apis are exposed in `ChainApi` interface and can be access with 
 
 #### Example 1: Sign transaction with a `Keying` account
 
-```typescript
-import { cryptoWaitReady } from '@polkadot/util-crypto';
+<pre class="language-typescript"><code class="lang-typescript">import { cryptoWaitReady } from '@polkadot/util-crypto';
 import { Keyring } from '@polkadot/keyring';
 
 // ...
@@ -18,16 +17,15 @@ await cryptoWaitReady();
 const keyring = new Keyring({ type: 'sr25519' });
 const alice = keyring.addFromUri('//Alice');
 
-const unsub = await client.tx.balances
-    .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
-    .signAndSend(alice, async ({ status }) => {
-      console.log('Transaction status', status.type);
-      if (status.type === 'BestChainBlockIncluded') { // or status.type === 'Finalized'
-        console.log(`Transaction completed at block hash ${status.value.blockHash}`);
-        await unsub();
-      }
-    });
-```
+const { status } = await client.tx.balances
+<strong>    .transferKeepAlive(&#x3C;destAddress>, 2_000_000_000_000n)
+</strong>    .signAndSend(alice, ({ status }) => {
+        console.log('Transaction status', status.type);
+    })
+    .untilFinalized();
+  
+console.log(`Transaction finalized at block hash ${status.value.blockHash}`);
+</code></pre>
 
 #### Example 2: Sign transaction using `Signer` from Polkadot{.js} wallet extension
 
@@ -36,15 +34,14 @@ const injected = await window.injectedWeb3['polkadot-js'].enable('A cool dapp');
 const account = (await injected.accounts.get())[0];
 const signer = injected.signer;
 
-const unsub = await client.tx.balances
+const { status } = await client.tx.balances
     .transferKeepAlive(<destAddress>, 2_000_000_000_000n)
-    .signAndSend(account.address, { signer }, async ({ status }) => {
-      console.log('Transaction status', status.type);
-      if (status.type === 'BestChainBlockIncluded') { // or status.type === 'Finalized'
-        console.log(`Transaction completed at block hash ${status.value.blockHash}`);
-        await unsub();
-      }
-    });
+    .signAndSend(account.address, { signer }, ({ status }) => {
+        console.log('Transaction status', status.type);
+    })
+    .untilFinalized();
+    
+console.log(`Transaction finalized at block hash ${status.value.blockHash}`);
 ```
 
 <details>
@@ -68,14 +65,13 @@ const remarkCall: PolkadotRuntimeRuntimeCallLike = {
   },
 };
 
-const unsub = client.tx.utility.batch([transferTx.call, remarkCall])
-    .signAndSend(account.address, { signer }, async ({ status }) => {
+const { status } = client.tx.utility.batch([transferTx.call, remarkCall])
+    .signAndSend(account.address, { signer }, ({ status }) => {
       console.log('Transaction status', status.type);
-      if (status.type === 'BestChainBlockIncluded') { // or status.type === 'Finalized'
-        console.log(`Transaction completed at block hash ${status.value.blockHash}`);
-        await unsub();
-      }
-    });
+    })
+    .untilFinalized();
+    
+console.log(`Transaction finalized at block hash ${status.value.blockHash}`);
 </code></pre>
 
 </details>
@@ -135,9 +131,8 @@ const weight: XcmV3WeightLimit = { type: 'Unlimited' };
 
 client.tx.polkadotXcm
   .limitedTeleportAssets(dest, beneficiary, assets, 0, weight)
-  .signAndSend(alice, { signer, tip: 1_000_000n }, (result) => {
-    console.dir(result, { depth: null });
-  });
+  .signAndSend(alice, { signer, tip: 1_000_000n })
+  .untilFinalized();
 ```
 
 </details>
