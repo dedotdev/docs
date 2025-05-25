@@ -1,8 +1,10 @@
 # Providers
 
-Providers are means to provide connection to the network, Dedot comes by default with providers for connection via [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets\_API) (`wss://`) and [smoldot](https://www.npmjs.com/package/smoldot) light client. But you can implement your own provider for your own needs.
+Providers are means to provide connection to the network, Dedot comes by default with providers for connection via [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) (`wss://`) and [smoldot](https://www.npmjs.com/package/smoldot) light client. But you can implement your own provider for your own needs.
 
 ### WsProvider
+
+#### Initialize from single Websocket endpoint
 
 ```typescript
 import { WsProvider } from 'dedot';
@@ -27,6 +29,36 @@ await provider.subscribe({
 
 // Disconnect from the network
 await provider.disconnect();
+```
+
+#### Initialize from a list of endpoints
+
+`WsProvider` can accept an array of WebSocket endpoints for automatic failover. Endpoints are randomly selected on initial connection, and reconnection attempts exclude previously failed endpoints when possible.
+
+```typescript
+import { WsProvider } from 'dedot';
+
+const provider = new WsProvider([
+  'wss://rpc.polkadot.io',
+  'wss://polkadot-rpc.dwellir.com',
+  'wss://polkadot.api.onfinality.io/public-ws'
+]);
+```
+
+#### Initialize from a customized endpoint selector method
+
+For advanced use-cases, WebSocket endpoint to use can also control by an external endpoint selector method, e.g: a wallet might want to selectively pick a RPC to switch to and display the selected RPC to the UI.
+
+```typescript
+import { WsProvider, WsConnectionState } from 'dedot';
+
+const provider = new WsProvider((info: WsConnectionState) => {
+  console.log(`Connection attempt ${info.attempt}`);
+
+  return info.attempt >= 3 
+     ? 'wss://backup.rpc' 
+     : 'wss://primary.rpc';
+});
 ```
 
 ### SmoldotProvider
