@@ -104,7 +104,17 @@ Start a smoldot client within a WebWorker, then initialize `SmoldotProvider` & `
 ```typescript
 import { DedotClient, SmoldotProvider } from 'dedot';
 import { startWithWorker } from 'dedot/smoldot/with-worker';
+
+// Import & initialize the smoldot worker
 import SmoldotWorker from 'dedot/smoldot/worker?worker';
+
+// Or initialize it the Worker constructor
+// const SmoldotWorker = new Worker(
+//   new URL('dedot/smoldot/worker', import.meta.url),
+//   {
+//     type: 'module',
+//   }
+// )
 
 // Start smoldot instance within a WebWorker
 const smoldot = startWithWorker(new SmoldotWorker());
