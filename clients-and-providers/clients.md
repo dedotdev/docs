@@ -157,7 +157,7 @@ type ApiEvent = 'connected' | 'disconnected' | 'reconnecting' |
 import { SubstrateRuntimeVersion } from 'dedot';
 
 // Listen to client/api events
-client.on('connected', () => {});
+client.on('connected', (connectedEndpoint: string) => {});
 client.on('disconnected', () => {});
 client.on('reconnecting', () => {});
 client.on('ready', () => {});
