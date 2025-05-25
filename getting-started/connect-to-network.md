@@ -111,9 +111,7 @@ import SmoldotWorker from 'dedot/smoldot/worker?worker';
 // Or initialize it the Worker constructor
 // const SmoldotWorker = new Worker(
 //   new URL('dedot/smoldot/worker', import.meta.url),
-//   {
-//     type: 'module',
-//   }
+//   { type: 'module' }
 // )
 
 // Start smoldot instance within a WebWorker
