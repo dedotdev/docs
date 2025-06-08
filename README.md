@@ -33,7 +33,7 @@ Designed to elevate the dapp development experience, Dedot is built & optimized 
 * Compatible with [`@polkadot/extension`](https://github.com/polkadot-js/extension)-based wallets (SubWallet, Talisman...)
 * Fully-typed low-level JSON-RPC client for advanced usage
 * Similar API-style with `@polkadot/api`, easy and fast migration
-* Support Metadata V14, V15 (latest)
+* Support Metadata V14, V15, V16 (latest)
 * Metadata optimization (caching, compact mode 🔜)
 * ... and a lot more 🔜
 
