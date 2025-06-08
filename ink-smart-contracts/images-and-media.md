@@ -25,7 +25,7 @@ const deployer = new ContractDeployer<FlipperContractApi>(client, flipperMetadat
 // const deployer = new ContractDeployer<FlipperContractApi>(client, flipperMetadata, existingCodeHash);
 ```
 
-### \[ink! v6 only] Map the account before interacting with \`pallet-revive\`
+### \[`ink! v6 only`] Map the account before interacting with `pallet-revive`
 
 Pallet revive is designed to work with evm address/account (20 bytes / H160) by default. So before interact with contracts deployed on pallet revive via a Substrate address (32 bytes / H256), one need to map their Substrate address to a corresponding EVM address first.&#x20;
 
@@ -89,7 +89,7 @@ const deploymentResult = await deployer.tx
   .untilFinalized(); // or .untilBestChainBlockIncluded();
 ```
 
-### \[\`ink! v4 & v5\`] Retrieve contract address after deployment
+### \[`ink! v4 & v5`] Retrieve contract address after deployment
 
 #### Extract from `Contract.Instantiated` event
 
@@ -115,11 +115,11 @@ await client.query.system.events(async (records) => {
 });
 ```
 
-### \[\`ink! v6 only\`] Calculate contract address
+### \[`ink! v6 only`] Calculate contract address
 
-Curerntly, there is no`Contract.Instantiated` event emitted from pallet revive to extract contract address, Dedot exposes 2 utility methods to help calculating the deployed contract address
+Curerntly, there is **no**`Contract.Instantiated` event emitted from pallet revive to extract contract address from, so Dedot exposes 2 utility methods to help calculating the deployed contract address.
 
-#### Calculate contract address via deployment salt (\`CREATE2\`)
+#### Calculate contract address via deployment salt (`CREATE2`)
 
 If one deploy the contract using a deployment salt (32 bytes), one can deterministically calculate the contract address even before deploying it using the `CREATE2` method.
 
@@ -147,11 +147,13 @@ const contractAddress = CREATE2(
 );
 ```
 
-#### Calculate contract address via deployer's \`nonce\`  (\`CREATE1\`)
+#### Calculate contract address via deployer's `nonce`  (`CREATE1`)
 
-If one deploy the contract without a deployment salt, one can calculate the contract address using the deployer's `nonce` before submitting the contract deployment transaction.
+If one deploy the contract without a deployment salt, one can calculate the contract address using the deployer's `nonce` before submitting the contract deployment transaction using the `CREATE1` method
 
 ```typescript
+import { toEvmAddress, CREATE1 } from 'dedot/contracts';
+
 const client = ... // initialize DedotClient
 const CALLER = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY'; // Alice
 
