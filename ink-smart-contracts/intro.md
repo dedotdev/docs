@@ -7,7 +7,11 @@ Dedot offers type-safe APIs to interact with ink! smart contracts. Primitives to
 ### Supported ink! versions
 
 {% hint style="info" %}
-Current Dedot only supports ink! versions `v4` & `v5`. We do not have plans to support older versions, but let us know your thoughts if we should reconsider this.
+Current Dedot only supports ink! versions `v4` , `v5` and `v6` (experimental). We do not have plans to support older versions, but let us know your thoughts if we should reconsider this.
+{% endhint %}
+
+{% hint style="warning" %}
+Support for [ink! v6](https://use.ink/docs/v6/) is currently experimental. Please [let us know](https://t.me/JoinDedot) if you run into any issues or have any feedback while trying it out!
 {% endhint %}
 
 ### Getting started
