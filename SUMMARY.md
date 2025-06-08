@@ -25,6 +25,7 @@
   * [Queries](ink-smart-contracts/queries.md)
   * [Transactions](ink-smart-contracts/transactions.md)
   * [Events](ink-smart-contracts/events.md)
+  * [Storage](ink-smart-contracts/storage.md)
   * [Handle errors](ink-smart-contracts/handle-errors.md)
 * [CLI](cli.md)
 * [Keyring & Signer](keyring-and-signer.md)

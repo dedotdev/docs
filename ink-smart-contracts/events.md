@@ -8,12 +8,17 @@ The `Contract` interface also have APIs to help you work with fully-typed contra
 import { ContractEvent } from 'dedot/contract';
 
 // Initialize Contract instance
-const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress);
+const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress, { defaultCaller: ALICE });
+
+const { raw } = await contract.query.flip();
 
 // Extracting contract events from transaction events
-const { events } = await contract.tx.flip({ gasLimit: raw.gasRequired })
-  .signAndSend(ALICE)
-  .untilFinalized();
+const { events } = await contract.tx.flip({ 
+    gasLimit: raw.gasRequired,
+    storageDepositLimit: raw.storageDeposit.value // required for ink! v6
+  })
+    .signAndSend(ALICE)
+    .untilFinalized();
   
 const flippedEvent = contract.events.Flipped.find(events);
 console.log('Old value', flippedEvent.data.old);
@@ -44,13 +49,21 @@ await client.query.system.events((events) => {
 
 ### Contract Event API
 
-`TODO`
-
 #### find
+
+Find the first target event from the provided events.
+
+```typescript
+const { events } = await contract.tx.flip({ ... })..untilFinalized();
+
+const flippedEvent = contract.events.Flipped.find(events);
+```
 
 #### filter
 
-#### is
+Filter the target event from the provided events.
 
-#### meta
+```typescript
+const flippedEvents = contract.events.Flipped.filter(events);
+```
 
