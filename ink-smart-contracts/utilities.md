@@ -2,7 +2,7 @@
 
 ### toEvmAddress
 
-Convert a Substrate address (32 bytes / H256) to an evm address (20 bytes / H160)
+Convert a Substrate address (32 bytes / H256) to an EVM address (20 bytes / H160).
 
 ```typescript
 import { toEvmAddress } from 'dedot/contracts'
@@ -13,7 +13,7 @@ const ALICE_EVM = toEvmAddress(ALICE); // 0x9621dde636de098b43efb0fa9b61facfe328
 
 ### generateRandomHex
 
-Generate a random hex as deployment salt, by default a 32-byte hex will be generated
+Generate a random hex as deployment salt, by default a 32-byte hex will be generated.
 
 ```typescript
 import { generateRandomHex } from 'dedot/utils'
