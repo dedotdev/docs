@@ -27,6 +27,7 @@
   * [Transactions](ink-smart-contracts/transactions.md)
   * [Events](ink-smart-contracts/events.md)
   * [Handle errors](ink-smart-contracts/handle-errors.md)
+  * [Utilities](ink-smart-contracts/utilities.md)
 * [CLI](cli.md)
 * [Keyring & Signer](keyring-and-signer.md)
 * [Runtime upgrades](runtime-upgrades.md)
