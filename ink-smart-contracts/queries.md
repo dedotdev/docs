@@ -13,10 +13,10 @@ const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY'; // Alice
 const contractAddress = '...';
 
 // create a contract instace from its metadata & address
-const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress);
+const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress, { defaultCaller: ALICE });
 
 // Making call to get the current value of the flipper contract
-const result = await contract.query.get({ caller: ALICE });
+const result = await contract.query.get();
 
 // Typescipt can inspect the type of value as `boolean` with the support of FlipperContractApi interface
 const value: boolean = result.data;

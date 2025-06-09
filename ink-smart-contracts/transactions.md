@@ -13,10 +13,10 @@ const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY'; // Alice
 const contractAddress = '...';
 
 // create a contract instace from its metadata & address
-const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress);
+const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress, { defaultCaller: ALICE });
 
 // Dry-run the call for validation and gas estimation
-const { data, raw } = await contract.query.flip({ caller: ALICE });
+const { data, raw } = await contract.query.flip();
 
 // Check if the message return a `Result<Data, Error>`
 // Skip this check if the message returning raw Data
