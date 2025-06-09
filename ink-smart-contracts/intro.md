@@ -20,6 +20,8 @@ Support for [ink! v6](https://use.ink/docs/v6/) is currently experimental. Pleas
 2. [Deploy contracts](images-and-media.md) using `ContractDeployer` interface
 3. Interact with contracts using `Contract` interface ([queries](queries.md), [submit transactions](transactions.md), ...)
 4. Working with [fully-typed contract events](events.md)
+5. Retrieve contract storage with [Storage API](https://docs.dedot.dev/ink-smart-contracts/storage)
+6. [Handling errors](https://docs.dedot.dev/ink-smart-contracts/handle-errors)
 
 {% hint style="warning" %}
 If you're connecting to a local [`substrate-contracts-node`](https://github.com/paritytech/substrate-contracts-node/releases) for development, you might want to connect to the network using `LegacyClient` since the latest version of `substrate-contracts-node` ([`v0.41.0`](https://github.com/paritytech/substrate-contracts-node/releases/tag/v0.41.0)) does not working fine/comply with the latest updates for [new JSON-RPC specs](https://paritytech.github.io/json-rpc-interface-spec/introduction.html) for `DedotClient` to work properly.
