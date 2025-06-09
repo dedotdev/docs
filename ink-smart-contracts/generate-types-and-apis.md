@@ -13,7 +13,7 @@ After running the command, Types & APIs of the contract will be generated. E.g: 
 
 ### `ContractApi` interface
 
-The generated `ContractApi` interface has the following structure with an example of a `FlipperContractApi` as follow:
+The generated `ContractApi` interface has the following structure, illustrated with an example of `FlipperContractApi`:
 
 ```typescript
 /**
