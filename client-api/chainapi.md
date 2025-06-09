@@ -2,7 +2,7 @@
 
 `ChainApi` interface is a concept that allows Dedot to enable Types & APIs suggestions for any Substrated-based blockchains. Each Substrate-based blockchain has its own `ChainApi` interface that exposes all of its Types & APIs to interact with the node & runtime.
 
-A `ChainApi` interface ussually has the following structure:
+A `ChainApi` interface has the following structure:
 
 ```typescript
 export interface VersionedSubstrateApi<Rv extends RpcVersion>
