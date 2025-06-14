@@ -17,7 +17,7 @@ Support for [ink! v6](https://use.ink/docs/v6/) is currently experimental. Pleas
 ### Getting started
 
 1. [Generate Types & APIs](generate-types-and-apis.md) for your contracts
-2. [Deploy contracts](images-and-media.md) using `ContractDeployer` interface
+2. [Deploy contracts](deploy.md) using `ContractDeployer` interface
 3. Interact with contracts using `Contract` interface ([queries](queries.md), [submit transactions](transactions.md), ...)
 4. Working with [fully-typed contract events](events.md)
 5. Retrieve contract storage with [Storage API](https://docs.dedot.dev/ink-smart-contracts/storage)

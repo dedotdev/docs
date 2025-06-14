@@ -21,7 +21,7 @@
 * [ink! Smart Contracts](ink-smart-contracts/README.md)
   * [Introduction](ink-smart-contracts/intro.md)
   * [Generate Types & APIs](ink-smart-contracts/generate-types-and-apis.md)
-  * [Deploy contracts](ink-smart-contracts/images-and-media.md)
+  * [Deploy contracts](ink-smart-contracts/deploy.md)
   * [Queries](ink-smart-contracts/queries.md)
   * [Transactions](ink-smart-contracts/transactions.md)
   * [Storage](ink-smart-contracts/storage.md)
