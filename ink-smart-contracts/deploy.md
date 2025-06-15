@@ -32,10 +32,21 @@ Pallet revive is designed to work with evm address/account (20 bytes / H160) by 
 Simply submit a transaction (`tx.revive.mapAccount`) to map the account:
 
 ```typescript
-await client.tx.revive
-  .mapAccount()
-  .signAndSend(CALLER, ({ status }) => console.log(status.type))
-  .untilFinalized();
+import { toEvmAddress } from 'dedot/contracts';
+
+// Check if the account is mapped yet
+const mappedAccount = await client.query.revive.originalAccount(toEvmAddress(CALLER));
+if (mappedAccount) {
+  console.log('Address has already been mapped!');
+} else {
+  console.log('Address not mapped yet, map it now!');
+  
+  await client.tx.revive
+    .mapAccount()
+    .signAndSend(CALLER, ({ status }) => console.log(status.type))
+    .untilFinalized();
+}
+
 ```
 
 ### Dry-run the contract instantiation
