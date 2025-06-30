@@ -119,9 +119,13 @@ const { data: value } = await contract.query.get();
 console.log('Flipper value:', value)
 ```
 
+#### Calculate contract address manually
+
+The instructions below show how to manually calculate the contract address after deployment. This is intended for advanced use cases only — we recommend using the unified API to retrieve the contract address from the deployment result as shown above.
+
 <details>
 
-<summary>[Advanced][ink! v4 &#x26; v5] Retrieve contract address from deployment events</summary>
+<summary>[ink! v4 &#x26; v5] Retrieve contract address from deployment events</summary>
 
 #### Extract from `Contract.Instantiated` event
 
@@ -151,7 +155,7 @@ await client.query.system.events(async (records) => {
 
 <details>
 
-<summary>[Advanced][ink! v6] Calculate contract address deterministically</summary>
+<summary>[ink! v6] Calculate contract address deterministically</summary>
 
 Curerntly, there is **no**`Contract.Instantiated` event emitted from pallet revive to extract contract address from, so Dedot exposes 2 utility methods to help calculating the deployed contract address.
 
