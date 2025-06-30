@@ -10,13 +10,8 @@ import { ContractEvent } from 'dedot/contract';
 // Initialize Contract instance
 const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress, { defaultCaller: ALICE });
 
-const { raw } = await contract.query.flip();
-
 // Extracting contract events from transaction events
-const { events } = await contract.tx.flip({ 
-    gasLimit: raw.gasRequired,
-    storageDepositLimit: raw.storageDeposit.value // required for ink! v6
-  })
+const { events } = await contract.tx.flip()
     .signAndSend(ALICE)
     .untilFinalized();
   
