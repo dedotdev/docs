@@ -51,6 +51,10 @@ if (mappedAccount) {
 
 ### Dry-run the contract instantiation
 
+{% hint style="info" %}
+Starting from `dedot@0.14.0`, dry-runs will be automatically performed internally to validate the transaction and estimate gas fees and storage deposit limits. You no longer need to run a dry-run manually unless you have advanced or custom use cases.&#x20;
+{% endhint %}
+
 Dry run the constructor call to help validate the contract instantiation and estimate gas-fee for the transaction.
 
 ```typescript
@@ -87,20 +91,37 @@ if (data.isErr) {
 After dry-run the transaction to make sure there will be no errors. Now let's submit the transaction to instantiate the contract and listen for events to extract contract address.
 
 ```typescript
+// Generate a random salt
+const salt = generateRandomHex();
+
 // Submitting the transaction to instanciate the contract
 const deploymentResult = await deployer.tx
-  .new(true, {
-    gasLimit: gasRequired,
-    storageDepositLimit: storageDeposit.value, // Only required for ink! v6
-    salt,
-  })
+  .new(true, { salt }) // `new` is the constructor defined in the contract
   .signAndSend(alice, ({ status }) => {
     console.log(`📊 Transaction status: ${status.type}`);
   })
   .untilFinalized(); // or .untilBestChainBlockIncluded();
 ```
 
-### \[`ink! v4 & v5`] Retrieve contract address after deployment
+### Retrieve contract address & contract instance after deployment
+
+Once the contract deployment transaction is included in the best chain block or finalized, you can easily retrieve the contract address or initialize the contract instance directly from the deployment result.
+
+```typescript
+// Calculate contract address
+const contractAddress = await deploymentResult.contractAddress()
+
+// Initialize fully-typed contract instance 
+const contract = await deploymentResult.contract();
+
+// You can now interact with the contract via contract instance
+const { data: value } = await contract.query.get();
+console.log('Flipper value:', value)
+```
+
+<details>
+
+<summary>[Advanced][ink! v4 &#x26; v5] Retrieve contract address from deployment events</summary>
 
 #### Extract from `Contract.Instantiated` event
 
@@ -126,7 +147,11 @@ await client.query.system.events(async (records) => {
 });
 ```
 
-### \[`ink! v6 only`] Calculate contract address
+</details>
+
+<details>
+
+<summary>[Advanced][ink! v6] Calculate contract address deterministically</summary>
 
 Curerntly, there is **no**`Contract.Instantiated` event emitted from pallet revive to extract contract address from, so Dedot exposes 2 utility methods to help calculating the deployed contract address.
 
@@ -175,3 +200,5 @@ const contractAddress = CREATE1(toEvmAddress(CALLER), nonce);
 
 // deploying the contract
 ```
+
+</details>
