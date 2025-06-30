@@ -15,7 +15,7 @@ import flipperMetadata from './flipper.json' assert { type: 'json' };
 const client = await DedotClient.new(new WsProvider('...'));
 
 // load contract wasm or prepare a codeHash
-const code = '0x...'; // wasm or polkavm
+const code = '0x...'; // wasm or polkavm (from .wasm or .polkavm files)
 const existingCodeHash = '0x...' // uploaded wasm/polkavm
 
 // create a ContractDeployer instance
