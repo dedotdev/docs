@@ -1,9 +1,9 @@
 # Generate Types & APIs
 
-Before interacting with a contract, you need to generate Types & APIs from the contract metadata to interact with. You can do that using `dedot` cli:
+Before interacting with a contract, you need to generate Types & APIs from the contract metadata to interact with. You can do that using `dedot` cli, this works with both [ink! ABI](https://use.ink/docs/v6/basics/abi/ink) or [Solidity ABI](https://use.ink/docs/v6/basics/abi/solidity).
 
 ```sh
-dedot typink -m ./path/to/metadata.json # or metadata.contract
+dedot typink -m ./path/to/metadata.json # or metadata.contract, storage.abi
 
 # use option -o to customize folder to put generated types
 dedot typink -m ./path/to/metadata.json -o ./where/to-put/generated-types
@@ -13,35 +13,58 @@ After running the command, Types & APIs of the contract will be generated. E.g: 
 
 ### `ContractApi` interface
 
-The generated `ContractApi` interface has the following structure, illustrated with an example of `FlipperContractApi`:
+The generated `ContractApi` interface has the following structure, illustrated with an example of `FlipperContractApi` using ink! contracts using ink! ABI.
 
 ```typescript
 /**
  * @name: FlipperContractApi
  * @contractName: flipper
- * @contractVersion: 0.1.0
+ * @contractVersion: 6.0.0
  * @authors: Parity Technologies <admin@parity.io>
- * @language: ink! 6.0.0-alpha
+ * @language: ink! 6.0.0-alpha.3
  **/
 export interface FlipperContractApi<
   Rv extends RpcVersion = RpcVersion,
   ChainApi extends VersionedGenericSubstrateApi = SubstrateApi,
-> extends GenericContractApi<Rv, ChainApi> {
-  query: ContractQuery<ChainApi[Rv]>;
-  tx: ContractTx<ChainApi[Rv]>;
-  constructorQuery: ConstructorQuery<ChainApi[Rv]>;
-  constructorTx: ConstructorTx<ChainApi[Rv]>;
-  events: ContractEvents<ChainApi[Rv]>;
+> extends InkGenericContractApi<Rv, ChainApi> {
+  metadataType: 'ink';
+  query: ContractQuery<ChainApi[Rv], 'ink'>;
+  tx: ContractTx<ChainApi[Rv], 'ink'>;
+  constructorQuery: ConstructorQuery<ChainApi[Rv], 'ink'>;
+  constructorTx: ConstructorTx<ChainApi[Rv], FlipperContractApi, 'ink'>;
+  events: ContractEvents<ChainApi[Rv], 'ink'>;
   storage: {
     root(): Promise<Flipper>;
     lazy(): WithLazyStorage<Flipper>;
   };
 
   types: {
+    ChainApi: ChainApi[Rv];
     RootStorage: Flipper;
     LazyStorage: WithLazyStorage<Flipper>;
     LangError: InkPrimitivesLangError;
+  };
+}
+
+```
+
+For ink! or Solidity contracts using Sol ABI, the structure will be a bit different with some APIs are disabled. Below is an example of `ContractApi` for flipper contract using Sol ABI.
+
+```typescript
+export interface FlipperContractApi<
+  Rv extends RpcVersion = RpcVersion,
+  ChainApi extends VersionedGenericSubstrateApi = SubstrateApi,
+> extends SolGenericContractApi<Rv, ChainApi> {
+  metadataType: 'sol';
+  query: ContractQuery<ChainApi[Rv], 'sol'>;
+  tx: ContractTx<ChainApi[Rv], 'sol'>;
+  constructorQuery: ConstructorQuery<ChainApi[Rv], 'sol'>;
+  events: ContractEvents<ChainApi[Rv], 'sol'>;
+  constructorTx: ConstructorTx<ChainApi[Rv], FlipperContractApi, 'sol'>;
+
+  types: {
     ChainApi: ChainApi[Rv];
   };
 }
+
 ```

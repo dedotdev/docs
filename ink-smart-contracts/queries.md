@@ -10,7 +10,7 @@ import flipperMetadata from './flipper.json' assert { type: 'json' };
 // ... initializing DedotClient
 
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY'; // Alice
-const contractAddress = '...';
+const contractAddress = '...'; // substrate address or evm address
 
 // create a contract instace from its metadata & address
 const contract = new Contract<FlipperContractApi>(client, flipperMetadata, contractAddress, { defaultCaller: ALICE });

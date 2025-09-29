@@ -5,7 +5,7 @@ description: Storage API to retrieve contract storage directly.
 # Storage
 
 {% hint style="info" %}
-Contract Storage API's currently only available for ink! v5 and v6! [Let us know](https://t.me/JoinDedot) if you want to use storage API for ink! v4.
+Contract Storage API's currently only available for ink! v5 and v6 using ink! ABI, and not available on ink! v6 or solidity contracts using Sol ABI.
 {% endhint %}
 
 Contract Storage API provides efficient access to smart contract storage data. This API allows developers to read contract storage without executing contract methods, enabling efficient data retrieval.
