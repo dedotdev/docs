@@ -28,7 +28,7 @@ Options:
 
 ### `dedot typink`
 
-Generate Types & APIs for an [ink!](https://use.ink/) smart contract given its metadata.
+Generate Types & APIs for an [ink!](https://use.ink/) or [Solidity](https://docs.soliditylang.org/en/latest/contracts.html) smart contract given its metadata/ABI.
 
 Usage:
 

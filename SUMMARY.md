@@ -18,6 +18,7 @@
   * [Transactions](client-api/transactions.md)
   * [Events](client-api/events.md)
   * [Errors](client-api/errors.md)
+  * [View Functions](client-api/view-functions.md)
 * [Smart Contracts](ink-smart-contracts/README.md)
   * [Introduction](ink-smart-contracts/intro.md)
   * [Generate Types & APIs](ink-smart-contracts/generate-types-and-apis.md)

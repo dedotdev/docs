@@ -11,7 +11,7 @@ Current Dedot only supports ink! versions `v4` , `v5` and `v6` (experimental). W
 {% endhint %}
 
 {% hint style="warning" %}
-Support for [ink! v6](https://use.ink/docs/v6/) and solidity contracts are currently **experimental**. Please [let us know](https://t.me/JoinDedot) if you run into any issues or have any feedback while trying it out!
+Support for [ink! v6](https://use.ink/docs/v6/) and [solidity contracts](https://docs.soliditylang.org/en/latest/contracts.html) are currently **experimental**. Please [let us know](https://t.me/JoinDedot) if you run into any issues or have any feedback while trying it out!
 {% endhint %}
 
 ### Getting started
