@@ -42,10 +42,10 @@ console.log('Pending rewards:', pendingRewards);
 {% endtab %}
 
 {% tab title="Smoldot" %}
-Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@substrate/connect-known-chains` package.
+Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@dedot/chain-specs` package.
 
 ```sh
-npm i @substrate/connect-known-chains # or via yarn, pnpm
+npm i @dedot/chain-specs # or via yarn, pnpm
 ```
 
 Next, initialize `SmoldotProvider` and `DedotClient` instances to connect to network
@@ -55,7 +55,7 @@ Next, initialize `SmoldotProvider` and `DedotClient` instances to connect to net
 import { start } from 'dedot/smoldot';
 
 // import `polkadot` chain spec to connect to Polkadot
-import { polkadot } from '@substrate/connect-known-chains'
+import { polkadot } from '@dedot/chain-specs'
 
 // Start smoldot instance &#x26; initialize a chain
 const smoldot = start();
@@ -93,10 +93,10 @@ console.log('Pending rewards:', pendingRewards);
 {% endtab %}
 
 {% tab title="Smoldot (via WebWorker)" %}
-Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@substrate/connect-known-chains` package.
+Preparing a `chainSpec.json` file for the network that you want to connect to, you can find the chain spec for well-known chains by installing `@dedot/chain-specs` package.
 
 ```sh
-npm i @substrate/connect-known-chains # or via yarn, pnpm
+npm i @dedot/chain-specs # or via yarn, pnpm
 ```
 
 Start a smoldot client within a WebWorker, then initialize `SmoldotProvider` & `DedotClient` to connect to the network
@@ -118,7 +118,7 @@ import SmoldotWorker from 'dedot/smoldot/worker?worker';
 const smoldot = startWithWorker(new SmoldotWorker());
 
 // Dynamically import Polkadot chain spec
-const { chainSpec } = await import('@substrate/connect-known-chains/polkadot');
+const { chainSpec } = await import('@dedot/chain-specs/polkadot');
 
 // Initialize a chain
 const chain = smoldot.addChain({ chainSpec });
