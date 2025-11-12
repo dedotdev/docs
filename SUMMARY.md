@@ -49,6 +49,7 @@
 
 ## Help & FAQ
 
+* [LLM.txt](https://docs.dedot.dev/llms-full.txt)
 * [Tutorials](help-and-faq/tutorials/README.md)
   * [Develop ink! dApp using Typink](help-and-faq/tutorials/develop-ink-dapp-using-typink.md)
 * [Built with Dedot](help-and-faq/built-with-dedot.md)
