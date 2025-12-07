@@ -24,22 +24,21 @@ The generated `ContractApi` interface has the following structure, illustrated w
  * @language: ink! 6.0.0-alpha.3
  **/
 export interface FlipperContractApi<
-  Rv extends RpcVersion = RpcVersion,
-  ChainApi extends VersionedGenericSubstrateApi = SubstrateApi,
-> extends InkGenericContractApi<Rv, ChainApi> {
+  ChainApi extends GenericSubstrateApi = SubstrateApi,
+> extends InkGenericContractApi<ChainApi> {
   metadataType: 'ink';
-  query: ContractQuery<ChainApi[Rv], 'ink'>;
-  tx: ContractTx<ChainApi[Rv], 'ink'>;
-  constructorQuery: ConstructorQuery<ChainApi[Rv], 'ink'>;
-  constructorTx: ConstructorTx<ChainApi[Rv], FlipperContractApi, 'ink'>;
-  events: ContractEvents<ChainApi[Rv], 'ink'>;
+  query: ContractQuery<'ink'>;
+  tx: ContractTx<'ink'>;
+  constructorQuery: ConstructorQuery<'ink'>;
+  constructorTx: ConstructorTx<FlipperContractApi, 'ink'>;
+  events: ContractEvents<'ink'>;
   storage: {
     root(): Promise<Flipper>;
     lazy(): WithLazyStorage<Flipper>;
   };
 
   types: {
-    ChainApi: ChainApi[Rv];
+    ChainApi: ChainApi;
     RootStorage: Flipper;
     LazyStorage: WithLazyStorage<Flipper>;
     LangError: InkPrimitivesLangError;
@@ -52,18 +51,17 @@ For ink! or Solidity contracts using Sol ABI, the structure will be a bit differ
 
 ```typescript
 export interface FlipperContractApi<
-  Rv extends RpcVersion = RpcVersion,
-  ChainApi extends VersionedGenericSubstrateApi = SubstrateApi,
+  ChainApi extends GenericSubstrateApi = SubstrateApi,
 > extends SolGenericContractApi<Rv, ChainApi> {
   metadataType: 'sol';
-  query: ContractQuery<ChainApi[Rv], 'sol'>;
-  tx: ContractTx<ChainApi[Rv], 'sol'>;
-  constructorQuery: ConstructorQuery<ChainApi[Rv], 'sol'>;
-  events: ContractEvents<ChainApi[Rv], 'sol'>;
-  constructorTx: ConstructorTx<ChainApi[Rv], FlipperContractApi, 'sol'>;
+  query: ContractQuery<'sol'>;
+  tx: ContractTx<'sol'>;
+  constructorQuery: ConstructorQuery<'sol'>;
+  events: ContractEvents<'sol'>;
+  constructorTx: ConstructorTx<FlipperContractApi, 'sol'>;
 
   types: {
-    ChainApi: ChainApi[Rv];
+    ChainApi: ChainApi;
   };
 }
 
