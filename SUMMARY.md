@@ -9,7 +9,7 @@
   * [Packages structure](getting-started/packages-structure.md)
 * [Clients & Providers](clients-and-providers/README.md)
   * [Providers](clients-and-providers/providers.md)
-  * [Clients](clients-and-providers/clients.md)
+  * [DedotClient](clients-and-providers/dedot-client.md)
 * [Client API](client-api/README.md)
   * [ChainApi](client-api/chainapi.md)
   * [Constants](client-api/constants.md)
