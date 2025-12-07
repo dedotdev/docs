@@ -7,8 +7,8 @@ With [forkless upgrade](https://wiki.polkadot.network/docs/learn-runtime-upgrade
 Clients will emit a `runtimeUpgraded` event whenever there is a new runtime upgrade happens. Dapps can listen to this event and react accordingly (e.g: show/hide ui components, notifications ...)
 
 ```typescript
-client.on('runtimeUpgraded', (runtimeVersion: SubstrateRuntimeVersion) => {
-  console.log('New runtime spec version:', runtimeVersion.specVersion);
+client.on('runtimeUpgraded', (runtimeVersion: SubstrateRuntimeVersion, at: BlockInfo) => {
+  console.log('New runtime spec version:', runtimeVersion.specVersion, 'at block: ', at.number);
 });
 ```
 
