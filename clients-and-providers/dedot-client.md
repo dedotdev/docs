@@ -44,12 +44,12 @@ interface DedotClient<ChainApi> {
   consts: ChainApi['consts'];            // Pallet constants
   call: ChainApi['call'];                // Runtime API calls
   tx: ChainApi['tx'];                    // Transaction builder
-  events: ChainApi['events'];            // Event type checking
-  errors: ChainApi['errors'];            // Error type checking
+  events: ChainApi['events'];            // Events API
+  errors: ChainApi['errors'];            // Errors API
   view: ChainApi['view'];                // View functions (Metadata V16+)
 
   // Utilities
-  at(hash: BlockHash): Promise<ISubstrateClientAt>;        // Query historical state at block
+  at(hash: BlockHash): Promise<ISubstrateClientAt>;        // Get an instance at a specific block for querying historical state
   getRuntimeVersion(): Promise<SubstrateRuntimeVersion>;   // Get runtime version with metadata sync
   setSigner(signer?: InjectedSigner): void;                // Set transaction signer
   sendTx(tx: HexString | Extrinsic, callback?: Callback): TxUnsub; // Broadcast transaction
