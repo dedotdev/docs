@@ -2,36 +2,36 @@
 
 Providers are means to provide connection to the network, Dedot comes by default with providers for connection via [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) (`wss://`) and [smoldot](https://www.npmjs.com/package/smoldot) light client. But you can implement your own provider for your own needs.
 
-### WsProvider
+#### WsProvider
 
-#### Initialize from single Websocket endpoint
+**Initialize from single Websocket endpoint**
 
 ```typescript
 import { WsProvider } from 'dedot';
 
 // Initialize the provider & connect to the network
 const provider = new WsProvider('wss://rpc.polkadot.io');
-await provider.connect();  
+await provider.connect();
 
-// Fetch the genesis hash 
-const genesisHash = await provider.send('chain_getBlockHash', [0]); 
-console.log(genesisHash);  
+// Fetch the genesis hash
+const genesisHash = await provider.send('chain_getBlockHash', [0]);
+console.log(genesisHash);
 
-// Subscribe to runtimeVersion changes 
+// Subscribe to runtimeVersion changes
 await provider.subscribe({
   subname: 'chain_newHead', // subscription name for notification
   subscribe: 'chain_subscribeNewHeads', // subscribe method
   params: [], // params for subscribe method
   unsubscribe: 'chain_unsubscribeNewHeads', // unsubscribe method
-}, (error, newHead, subscription) => { 
-  console.log('newHead', newHead);   
-});  
+}, (error, newHead, subscription) => {
+  console.log('newHead', newHead);
+});
 
 // Disconnect from the network
 await provider.disconnect();
 ```
 
-#### Initialize from a list of endpoints
+**Initialize from a list of endpoints**
 
 `WsProvider` can accept an array of WebSocket endpoints for automatic failover. Endpoints are randomly selected on initial connection, and reconnection attempts exclude previously failed endpoints when possible.
 
@@ -45,7 +45,7 @@ const provider = new WsProvider([
 ]);
 ```
 
-#### Initialize from a customized endpoint selector method
+**Initialize from a customized endpoint selector method**
 
 For advanced use-cases, WebSocket endpoint to use can also control by an external endpoint selector method, e.g: a wallet might want to selectively pick a RPC to switch to and display the selected RPC to the UI.
 
@@ -55,13 +55,38 @@ import { WsProvider, WsConnectionState } from 'dedot';
 const provider = new WsProvider((info: WsConnectionState) => {
   console.log(`Connection attempt ${info.attempt}`);
 
-  return info.attempt >= 3 
-     ? 'wss://backup.rpc' 
+  return info.attempt >= 3
+     ? 'wss://backup.rpc'
      : 'wss://primary.rpc';
 });
 ```
 
-### SmoldotProvider
+**Disconnect and switch endpoint**
+
+The `disconnect` method accepts an optional `switchEndpoint` flag that allows you to disconnect from the current endpoint and automatically reconnect to a different one.
+
+```typescript
+import { WsProvider } from 'dedot';
+
+const provider = new WsProvider([
+  'wss://rpc.polkadot.io',
+  'wss://polkadot-rpc.dwellir.com',
+]);
+
+await provider.connect();
+
+// Normal disconnect - closes connection and cleans up
+await provider.disconnect();
+
+// Disconnect and switch endpoint - automatically reconnects to a different endpoint
+await provider.disconnect(true); // Provider will auto-reconnect to another endpoint
+```
+
+{% hint style="info" %}
+When `switchEndpoint` is `true`, the provider automatically reconnects to a different endpoint from the list. When `false` or not provided, the provider performs a normal disconnection with cleanup.
+{% endhint %}
+
+#### SmoldotProvider
 
 `SmoldotProvider` take in a parameter of type [`Chain`](https://github.com/smol-dot/smoldot/blob/cde274e628e3f34cf05e1a73a46cf323b6702a94/wasm-node/javascript/src/public-types.ts#L127) from `smoldot`, so before initialize a `SmoldotProvider`, one should install `smoldot` package and following the [instruction](https://github.com/smol-dot/smoldot/tree/main/wasm-node/javascript#example) to instanciate a `Chain` connection to the network.
 
@@ -87,27 +112,27 @@ const chain = await client.addChain({ chainSpec });
 // Initialize providers & connect to the network
 const provider = new SmoldotProvider(chain);
 
-await provider.connect();  
+await provider.connect();
 
-// Fetch the genesis hash 
-const genesisHash = await provider.send('chain_getBlockHash', [0]); 
-console.log(genesisHash);  
+// Fetch the genesis hash
+const genesisHash = await provider.send('chain_getBlockHash', [0]);
+console.log(genesisHash);
 
-// Subscribe to runtimeVersion changes 
+// Subscribe to runtimeVersion changes
 await provider.subscribe({
   subname: 'chain_newHead', // subscription name for notification
   subscribe: 'chain_subscribeNewHeads', // subscribe method
   params: [], // params for subscribe method
   unsubscribe: 'chain_unsubscribeNewHeads', // unsubscribe method
-}, (error, newHead, subscription) => { 
-  console.log('newHead', newHead);   
-});  
+}, (error, newHead, subscription) => {
+  console.log('newHead', newHead);
+});
 
 // Disconnect from the network
 await provider.disconnect();
 ```
 
-### Add your own custom provider?
+#### Add your own custom provider?
 
 Every provider must implement the `JsonRpcProvider` interface, defined as below:
 
