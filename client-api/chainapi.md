@@ -5,19 +5,16 @@
 A `ChainApi` interface has the following structure:
 
 ```typescript
-export interface VersionedSubstrateApi<Rv extends RpcVersion>
-  rpc: ChainJsonRpcApis<Rv>; // json-rpc methods
-  consts: ChainConsts<Rv>; // runtime constants
-  query: ChainStorage<Rv>; // on-chain storage queries
-  errors: ChainErrors<Rv>; // on-chain errors
-  events: ChainEvents<Rv>; // on-chain events
-  call: RuntimeApis<Rv>; // runtime apis
-  tx: ChainTx<Rv>; // transactions
-}
-
 export interface ChainApi {
-  legacy: VersionedSubstrateApi<RpcLegacy>; // interface for legacy JSON-RPC
-  v2: VersionedSubstrateApi<RpcV2>; // interface for new JSON-RPC
+  rpc: ChainJsonRpcApis; // json-rpc methods
+  consts: ChainConsts; // runtime constants
+  query: ChainStorage; // on-chain storage queries
+  errors: ChainErrors; // on-chain errors
+  events: ChainEvents; // on-chain events
+  call: RuntimeApis; // runtime apis
+  tx: ChainTx<ChainKnownTypes>; // transactions
+  
+  types: ChainKnownTypes; // known chain types from the runtime (Address, Signature, AssetId ...)
 }
 ```
 
